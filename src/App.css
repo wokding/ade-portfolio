@@ -1,0 +1,324 @@
+:root {
+  --primary: #1f2937;
+  --secondary: #374151;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --bg: #f9fafb;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--primary);
+}
+
+/* NAVBAR */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+}
+
+.nav-links a {
+  margin-left: 26px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #f9fafb 60%,
+    #f3f4f6 100%
+  );
+}
+
+.hero-inner {
+  max-width: 1000px;
+  margin: auto;
+  padding: 110px 40px 90px;
+  text-align: center;
+}
+
+.hero-profile {
+  margin-bottom: 30px;
+}
+
+.hero-profile img {
+  width: 180px;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  border-radius: 14px;
+  background: #ffffff;
+  padding: 6px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  margin-bottom: 12px;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  color: var(--secondary);
+  margin-bottom: 18px;
+}
+
+.hero-intro {
+  max-width: 720px;
+  margin: 0 auto 32px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--secondary);
+}
+
+/* HERO ACTIONS */
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 12px 22px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  border-radius: 6px;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  padding: 12px 22px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  border: 1px solid var(--primary);
+  border-radius: 6px;
+}
+
+.btn-secondary:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-inner {
+    padding: 90px 24px 70px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+}
+
+/* SECTION */
+.section-inner {
+  max-width: 900px;
+  margin: auto;
+  padding: 80px 40px;
+}
+
+.section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 26px;
+  position: relative;
+  padding-left: 14px;
+}
+
+.section h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: 70%;
+  background: var(--primary);
+}
+
+/* CARD */
+.content-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 36px 40px;
+}
+
+.content-card .job:not(:last-child) {
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* SKILLS GRID */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.skills-grid ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.skills-grid li {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* EXPERIENCE */
+.job span {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.job ul {
+  margin-top: 12px;
+  padding-left: 18px;
+}
+
+/* CONTACT */
+.contact-list {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-list li {
+  margin-bottom: 10px;
+}
+
+.contact-list a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.contact-list a:hover {
+  text-decoration: underline;
+}
+
+/* FOOTER */
+.footer {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-inner {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .hero-inner {
+    padding: 80px 24px 60px;
+  }
+
+  .section-inner {
+    padding: 60px 24px;
+  }
+
+  .skills {
+    columns: 1;
+  }
+}
+
+/* ===============================
+   GLOBAL LINE SPACING CONSISTENT
+   =============================== */
+
+body {
+  line-height: 1.6;
+}
+
+/* Paragraph consistency */
+p {
+  margin: 0 0 1em;
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+  line-height: 1.3;
+}
+
+h3 {
+  margin-bottom: 6px;
+}
+
+/* Lists */
+ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+li {
+  line-height: 1.6;
+}
+
+/* Experience section fine-tuning */
+.job ul li {
+  margin-bottom: 6px;
+}
+
+/* Card content consistency */
+.content-card {
+  line-height: 1.6;
+}
