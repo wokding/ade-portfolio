@@ -100,28 +100,50 @@
     index = (index + 1) % currentText.length;
   }
 
+  /* ==============================
+     1. SYNC WITH NAVBAR (PRIMARY)
+     ============================== */
   function syncWithNavbar() {
     const activeLink = document.querySelector(".nav-link.active");
+    if (!activeLink) return false;
 
-    if (activeLink) {
-      const targetId = activeLink.getAttribute("href").replace("#", "");
-      if (titleMap[targetId] && titleMap[targetId] !== currentText) {
-        currentText = titleMap[targetId];
-        index = 0;
-      }
-    } else {
-      const hash = window.location.hash.replace("#", "");
-      if (titleMap[hash] && titleMap[hash] !== currentText) {
-        currentText = titleMap[hash];
-        index = 0;
-      }
+    const targetId = activeLink.getAttribute("href").replace("#", "");
+    if (titleMap[targetId] && titleMap[targetId] !== currentText) {
+      currentText = titleMap[targetId];
+      index = 0;
     }
+    return true;
   }
 
-  setInterval(animateTitle, 300);
-  setInterval(syncWithNavbar, 200);
+  /* ==============================
+     2. INTERSECTION OBSERVER (FALLBACK)
+     ============================== */
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (
+          entry.isIntersecting &&
+          titleMap[entry.target.id] &&
+          !syncWithNavbar()
+        ) {
+          currentText = titleMap[entry.target.id];
+          index = 0;
+        }
+      });
+    },
+    {
+      rootMargin: "-40% 0px -40% 0px",
+      threshold: 0,
+    }
+  );
 
-  // Initial sync on page load
+  document.querySelectorAll("section[id]").forEach((section) => {
+    observer.observe(section);
+  });
+
+  setInterval(animateTitle, 300);
+
+  // Initial sync
   syncWithNavbar();
 </script>
 </body>
