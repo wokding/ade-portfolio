@@ -45,8 +45,12 @@
 
   <!-- Animated Browser Tab Title -->
   <script>
-    const titleText =
-      "👨‍💻 Ade Naufal Rianto | Network Engineer • Enterprise & Telecom • ";
+    const isMobile = window.innerWidth <= 768;
+
+    const titleText = isMobile
+      ? "👨‍💻 Ade | Network Engineer • "
+      : "👨‍💻 Ade Naufal Rianto | Network Engineer • Enterprise & Telecom • ";
+
     let index = 0;
 
     function animateTitle() {
@@ -55,7 +59,7 @@
       index = (index + 1) % titleText.length;
     }
 
-    setInterval(animateTitle, 250);
+    setInterval(animateTitle, 300);
   </script>
 </body>
 </html>
