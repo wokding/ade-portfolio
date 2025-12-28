@@ -1,21 +1,46 @@
 import "./App.css";
+import { useEffect } from "react";
 import profile from "./assets/profile.jpg";
 import cv from "./assets/Ade-Naufal-Rianto-CV.pdf";
+import doorlockDemo from "./assets/doorlock-demo.gif";
+//import aprioriDemo from "./assets/apriori-demo.gif";
 
 export default function App() {
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 120;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    });
+  }, []);
   return (
     <div className="wrapper">
       {/* NAVBAR */}
       <nav className="nav">
         <div className="nav-inner">
-          <div className="logo">Ade Naufal Rianto</div>
+          <div className="logo">ADE NAUFAL RIANTO</div>
           <div className="nav-links">
-            <a href="#about">About</a>
-            <a href="#cover-letter">Cover Letter</a>
-            <a href="#skills">Technical Skill</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#education">Education</a>
-            <a href="#experience">Experience</a>
+            <a href="#about" className="nav-link">About</a>
+            <a href="#cover-letter" className="nav-link">Cover Letter</a>
+            <a href="#skills" className="nav-link">Technical Skill</a>
+            <a href="#certifications" className="nav-link">Certifications</a>
+            <a href="#education" className="nav-link">Education</a>
+            <a href="#experience" className="nav-link">Experience</a>
+            <a href="#projects" className="nav-link">Projects</a>
           </div>
         </div>
       </nav>
@@ -28,7 +53,7 @@ export default function App() {
           </div>
 
           {/* NAME */}
-          <h1 className="hero-name">Ade Naufal Rianto</h1>
+          <h1 className="hero-name">ADE NAUFAL RIANTO</h1>
 
           {/* ROLE */}
           <h2 className="hero-role">Network Engineer</h2>
@@ -182,6 +207,12 @@ export default function App() {
                 National certification covering HTML, CSS, JavaScript, and basic
                 database fundamentals.
               </li>
+              <li>
+                <strong>TOEFL ITP – Englishvit</strong>
+                <br />
+                English proficiency certification measuring listening, structure, and reading
+                comprehension skills for academic and professional purposes.
+              </li>
             </ul>
           </div>
         </div>
@@ -200,6 +231,36 @@ export default function App() {
                 Focused on computer networks, information systems, and basic software
                 development. Completed academic projects related to networking,
                 system analysis, and IT infrastructure.
+              </p>
+
+              <hr />
+
+              <h4>Student Organization & Leadership Experience</h4>
+              <p>
+                Actively involved in <strong>Pena Muda Student Activity Unit (UKM)</strong>,
+                a campus literary and creative organization. Served as the
+                <strong> Chief Organizer</strong> for the event
+                <em> “Penanniversary: Poetry Night – Harmoni Simfoni”</em>, which was part
+                of a series of activities celebrating the fourth anniversary of Pena Muda.
+              </p>
+
+              <p>
+                In this role, I was responsible for coordinating the event planning,
+                managing the organizing committee, overseeing event execution, and
+                ensuring collaboration between internal members and external participants.
+                The event received public attention and was covered by national media.
+              </p>
+
+              <p>
+                Media coverage:
+                {" "}
+                <a
+                  href="https://www.liputan6.com/citizen6/read/3204154/malam-puisi-ala-ukm-pena-muda-universitas-bhayangkara-bekasi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Liputan6.com – Poetry Night by UKM Pena Muda
+                </a>
               </p>
             </div>
           </div>
@@ -263,6 +324,203 @@ export default function App() {
         </div>
       </section>
 
+      {/* PROFESSIONAL STATEMENT */}
+      <section id="statement" className="section">
+        <div className="section-inner">
+          <h2>Professional Statement</h2>
+
+          <div className="content-card">
+            <blockquote>
+              “I specialize in maintaining high-availability and secure network
+              infrastructures in enterprise and mission-critical environments, with
+              a strong focus on reliability, operational excellence, and continuous
+              improvement.”
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      {/* PROJECTS & ACHIEVEMENTS */}
+      <section id="projects" className="section">
+        <div className="section-inner">
+          <h2>Projects & Achievements</h2>
+
+          <div className="content-card">
+
+            {/* PROJECT 1 */}
+            <div className="job">
+              <h3>IoT-Based Smart Door Lock System</h3>
+              <span>Personal Project · Arduino & Embedded Systems</span>
+
+              <div className="project-demo">
+                <img
+                  src={doorlockDemo}
+                  alt="IoT Smart Door Lock System Demo"
+                />
+              </div>
+
+              <p>
+                Designed and implemented an IoT-based smart door lock system using
+                Arduino as the main controller. The project focused on improving
+                physical access security by integrating electronic locking mechanisms
+                with programmable control logic.
+              </p>
+
+              <ul>
+                <li>
+                  Developed firmware logic using C/C++ to control door lock actuators
+                  and input devices.
+                </li>
+                <li>
+                  Integrated hardware components including microcontroller, relay,
+                  and electronic lock modules.
+                </li>
+                <li>
+                  Implemented access control logic to handle secure lock and unlock
+                  operations.
+                </li>
+                <li>
+                  Conducted functional testing to ensure system reliability and
+                  stable operation.
+                </li>
+                <li>
+                  Created technical documentation covering system architecture,
+                  wiring, and code structure.
+                </li>
+              </ul>
+
+              <p>
+                Source Code:{" "}
+                <a
+                  href="https://github.com/wokding/arduino-doorlock-NEW"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  github.com/wokding/arduino-doorlock-NEW
+                </a>
+              </p>
+            </div>
+
+            <hr />
+
+            {/* PROJECT 2 */}
+            <div className="job">
+              <h3>Sales Information System (SIFO Penjualan)</h3>
+              <span>
+                Academic / Personal Project · Web-Based Information System
+              </span>
+
+              <p>
+                Developed a web-based sales information system designed to manage product
+                data, customer transactions, and sales reporting. This project was also
+                utilized as a practical learning and assessment material for professional
+                certification preparation under the Junior Web Developer competency
+                scheme.
+              </p>
+
+              <ul>
+                <li>
+                  Designed system workflow and database structure to support sales,
+                  inventory, and transaction management.
+                </li>
+                <li>
+                  Implemented core application features including product management,
+                  sales transactions, and reporting modules.
+                </li>
+                <li>
+                  Applied role-based access concepts to separate user responsibilities
+                  within the system.
+                </li>
+                <li>
+                  Used the system as a hands-on practice case for professional competency
+                  development aligned with the Junior Web Developer certification scheme.
+                </li>
+                <li>
+                  Conducted functional testing to ensure data consistency and proper
+                  transaction handling.
+                </li>
+                <li>
+                  Prepared technical documentation to support evaluation, deployment, and
+                  future enhancements.
+                </li>
+              </ul>
+
+              <p>
+                Source Code:{" "}
+                <a
+                  href="https://github.com/wokding/sifopenjualan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  github.com/wokding/sifopenjualan
+                </a>
+              </p>
+            </div>
+
+            <hr />
+
+            {/* PROJECT 3 */}
+            <div className="job">
+              <h3>
+                Sales Data Mining Using Apriori Algorithm
+              </h3>
+              <span>
+                Undergraduate Thesis Project · Data Mining & Business Intelligence
+              </span>
+
+              {/*<div className="project-demo">
+                <img
+                  src={aprioriDemo}
+                  alt="Sales Data Mining Using Apriori Algorithm Demo"
+                />
+              </div>*/}
+
+              <p>
+                Developed a data mining system as part of an undergraduate thesis titled
+                <em>
+                  {" "}
+                  “Implementation of Data Mining Sales of Over-the-counter Drugs with Apriori Algorithm
+                  (Case Study: Kimia Farma Pharmacy Summarecon Bekasi).”
+                </em>.
+                The project aimed to analyze sales transaction data of over-the-counter
+                medicines to discover meaningful association rules that support business
+                decision-making.
+              </p>
+
+              <ul>
+                <li>
+                  Implemented the Apriori algorithm to identify frequent itemsets and
+                  association rules from historical sales transaction data.
+                </li>
+                <li>
+                  Analyzed purchasing patterns of over-the-counter medicines to reveal
+                  product combinations frequently bought together.
+                </li>
+                <li>
+                  Applied data preprocessing techniques to improve data quality and
+                  algorithm accuracy.
+                </li>
+                <li>
+                  Evaluated algorithm results using minimum support and confidence
+                  thresholds to ensure relevant and actionable insights.
+                </li>
+                <li>
+                  Presented analytical results to support inventory planning and product
+                  placement strategies.
+                </li>
+              </ul>
+
+              <p>
+                This thesis project was successfully completed with <strong>excellent
+                  academic results</strong>, and the author graduated with the
+                <strong> Cum Laude </strong> distinction.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* CONTACT */}
       <section id="contact" className="section">
         <div className="section-inner">
@@ -274,13 +532,11 @@ export default function App() {
             </p>
             <ul className="contact-list">
               <li>
-                <strong>Email:</strong>{" "}
-                <a href="mailto:adenaufalr@gmail.com">
-                  adenaufalr@gmail.com
-                </a>
+                📧 <strong>Email:</strong>{" "}
+                <a href="mailto:adenaufalr@gmail.com">adenaufalr@gmail.com</a>
               </li>
               <li>
-                <strong>WhatsApp:</strong>{" "}
+                💬 <strong>WhatsApp:</strong>{" "}
                 <a
                   href="https://wa.me/6281385436440"
                   target="_blank"
@@ -290,7 +546,7 @@ export default function App() {
                 </a>
               </li>
               <li>
-                <strong>LinkedIn:</strong>{" "}
+                🔗 <strong>LinkedIn:</strong>{" "}
                 <a
                   href="https://www.linkedin.com/in/ade-naufal-rianto"
                   target="_blank"
@@ -298,9 +554,6 @@ export default function App() {
                 >
                   linkedin.com/in/ade-naufal-rianto
                 </a>
-              </li>
-              <li>
-                <strong>Location:</strong> Jakarta / West Java, Indonesia
               </li>
             </ul>
           </div>
@@ -313,6 +566,12 @@ export default function App() {
           © 2025 Ade Naufal Rianto · Network Engineer
         </div>
       </footer>
+      <button
+        className="scroll-top"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        ↑
+      </button>
     </div>
   );
 }
