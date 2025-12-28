@@ -47,18 +47,72 @@
   <script>
     const isMobile = window.innerWidth <= 768;
 
-    const titleText = isMobile
-      ? "👨‍💻 Ade | Network Engineer • "
-      : "👨‍💻 Ade Naufal Rianto | Network Engineer • Enterprise & Telecom • ";
+    const sectionTitles = {
+      hero: isMobile
+        ? "👨‍💻 Ade | Network Engineer • "
+        : "👨‍💻 Ade Naufal Rianto | Network Engineer • ",
 
+      about: isMobile
+        ? "👋 About | Ade • "
+        : "👋 About | Ade Naufal Rianto • ",
+
+      "cover-letter": isMobile
+        ? "✉️ Cover Letter • "
+        : "✉️ Cover Letter | Ade Naufal Rianto • ",
+
+      skills: isMobile
+        ? "🧠 Skills • "
+        : "🧠 Technical Skills | Ade Naufal Rianto • ",
+
+      certifications: isMobile
+        ? "📜 Certifications • "
+        : "📜 Certifications | Ade Naufal Rianto • ",
+
+      education: isMobile
+        ? "🎓 Education • "
+        : "🎓 Education | Ade Naufal Rianto • ",
+
+      experience: isMobile
+        ? "🛠 Experience • "
+        : "🛠 Experience | Network Engineer • ",
+
+      projects: isMobile
+        ? "🚀 Projects • "
+        : "🚀 Projects & Achievements | Ade Naufal Rianto • ",
+
+      contact: isMobile
+        ? "📩 Contact • "
+        : "📩 Contact | Ade Naufal Rianto • ",
+    };
+
+    let activeSection = "hero";
     let index = 0;
 
     function animateTitle() {
+      const text = sectionTitles[activeSection];
       document.title =
-        titleText.substring(index) + titleText.substring(0, index);
-      index = (index + 1) % titleText.length;
+        text.substring(index) + text.substring(0, index);
+      index = (index + 1) % text.length;
     }
 
+    function detectSection() {
+      const sections = document.querySelectorAll("section[id]");
+      let current = "hero";
+
+      sections.forEach((section) => {
+        const top = section.offsetTop - 140;
+        if (window.scrollY >= top) {
+          current = section.id;
+        }
+      });
+
+      if (current !== activeSection) {
+        activeSection = current;
+        index = 0;
+      }
+    }
+
+    window.addEventListener("scroll", detectSection);
     setInterval(animateTitle, 300);
   </script>
 </body>
