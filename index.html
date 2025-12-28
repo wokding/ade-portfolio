@@ -103,9 +103,12 @@
           currentText = titleMap[targetId];
           index = 0;
         }
-      } else if (currentText !== defaultTitle) {
-        currentText = defaultTitle;
-        index = 0;
+      } else {
+        const hash = window.location.hash.replace("#", "");
+        if (titleMap[hash] && titleMap[hash] !== currentText) {
+          currentText = titleMap[hash];
+          index = 0;
+        }
       }
     }
 
