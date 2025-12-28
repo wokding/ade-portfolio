@@ -13,9 +13,22 @@
   <meta property="og:image" content="https://wokding.github.io/ade-portfolio/profile.jpg">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script type="module" crossorigin src="/ade-portfolio/assets/index-BQ7osisO.js"></script>
+  <script type="module" crossorigin src="/ade-portfolio/assets/index-CpRWPzpa.js"></script>
   <link rel="stylesheet" crossorigin href="/ade-portfolio/assets/index-6wiqWHzz.css">
 </head>
+<script>
+  const titleText =
+    "Ade Naufal Rianto | Network Engineer";
+  let index = 0;
+
+  function animateTitle() {
+    document.title =
+      titleText.substring(index) + titleText.substring(0, index);
+    index = (index + 1) % titleText.length;
+  }
+
+  setInterval(animateTitle, 250);
+</script>
 <body>
   <div id="root"></div>
 
