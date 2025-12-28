@@ -47,13 +47,9 @@
   <script>
     const isMobile = window.innerWidth <= 768;
 
-    const sectionTitles = {
-      hero: isMobile
-        ? "👨‍💻 Ade | Network Engineer • "
-        : "👨‍💻 Ade Naufal Rianto | Network Engineer • ",
-
+    const titleMap = {
       about: isMobile
-        ? "👋 About | Ade • "
+        ? "👋 About • "
         : "👋 About | Ade Naufal Rianto • ",
 
       "cover-letter": isMobile
@@ -85,35 +81,36 @@
         : "📩 Contact | Ade Naufal Rianto • ",
     };
 
-    let activeSection = "hero";
+    const defaultTitle = isMobile
+      ? "👨‍💻 Ade | Network Engineer • "
+      : "👨‍💻 Ade Naufal Rianto | Network Engineer • ";
+
+    let currentText = defaultTitle;
     let index = 0;
 
     function animateTitle() {
-      const text = sectionTitles[activeSection];
       document.title =
-        text.substring(index) + text.substring(0, index);
-      index = (index + 1) % text.length;
+        currentText.substring(index) + currentText.substring(0, index);
+      index = (index + 1) % currentText.length;
     }
 
-    function detectSection() {
-      const sections = document.querySelectorAll("section[id]");
-      let current = "hero";
+    function syncWithNavbar() {
+      const activeLink = document.querySelector(".nav-link.active");
 
-      sections.forEach((section) => {
-        const top = section.offsetTop - 140;
-        if (window.scrollY >= top) {
-          current = section.id;
+      if (activeLink) {
+        const targetId = activeLink.getAttribute("href").replace("#", "");
+        if (titleMap[targetId] && titleMap[targetId] !== currentText) {
+          currentText = titleMap[targetId];
+          index = 0;
         }
-      });
-
-      if (current !== activeSection) {
-        activeSection = current;
+      } else if (currentText !== defaultTitle) {
+        currentText = defaultTitle;
         index = 0;
       }
     }
 
-    window.addEventListener("scroll", detectSection);
     setInterval(animateTitle, 300);
+    setInterval(syncWithNavbar, 200);
   </script>
 </body>
 </html>
