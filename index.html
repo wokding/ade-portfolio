@@ -75,6 +75,7 @@
 
     let currentText = defaultTitle;
     let index = 0;
+    let animationInterval = null;
 
     function animateTitle() {
       document.title =
@@ -97,7 +98,28 @@
       }
     }
 
-    setInterval(animateTitle, 300);
+    function startAnimation() {
+      if (!animationInterval) {
+        animationInterval = setInterval(animateTitle, 300);
+      }
+    }
+
+    function stopAnimation() {
+      clearInterval(animationInterval);
+      animationInterval = null;
+    }
+
+    // Visibility API — pause when tab inactive
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        stopAnimation();
+      } else {
+        startAnimation();
+      }
+    });
+
+    // Initial start
+    startAnimation();
     setInterval(syncTitleWithNavbar, 200);
   </script>
 </body>
