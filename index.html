@@ -64,17 +64,9 @@
         ? "🛠 Experience • "
         : "🛠 Experience | Ade Naufal Rianto • ",
 
-      statement: isMobile
-        ? "👔 Statement • "
-        : "👔 Professional Statement | Ade Naufal Rianto • ",
-
       projects: isMobile
         ? "🚀 Projects • "
         : "🚀 Projects & Achievements | Ade Naufal Rianto • ",
-
-      contact: isMobile
-        ? "📩 Contact • "
-        : "📩 Contact | Ade Naufal Rianto • ",
     };
 
     const defaultTitle = isMobile
@@ -90,57 +82,23 @@
       index = (index + 1) % currentText.length;
     }
 
-    function syncWithNavbar() {
+    function syncTitleWithNavbar() {
       const activeLink = document.querySelector(".nav-link.active");
-      if (!activeLink) return false;
+
+      if (!activeLink) {
+        currentText = defaultTitle;
+        return;
+      }
 
       const targetId = activeLink.getAttribute("href").replace("#", "");
       if (titleMap[targetId] && titleMap[targetId] !== currentText) {
         currentText = titleMap[targetId];
         index = 0;
       }
-      return true;
     }
 
-    function initObserverWhenReady() {
-      const sections = document.querySelectorAll("section[id]");
-
-      if (!sections.length) {
-        // React belum render → coba lagi
-        requestAnimationFrame(initObserverWhenReady);
-        return;
-      }
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (
-              entry.isIntersecting &&
-              titleMap[entry.target.id] &&
-              !syncWithNavbar()
-            ) {
-              currentText = titleMap[entry.target.id];
-              index = 0;
-            }
-          });
-        },
-        {
-          rootMargin: "-40% 0px -40% 0px",
-          threshold: 0,
-        }
-      );
-
-      sections.forEach((section) => observer.observe(section));
-    }
-
-    // Start animation
     setInterval(animateTitle, 300);
-
-    // Init AFTER React render
-    initObserverWhenReady();
-
-    // Initial navbar sync
-    setTimeout(syncWithNavbar, 300);
+    setInterval(syncTitleWithNavbar, 200);
   </script>
 </body>
 
