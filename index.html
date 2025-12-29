@@ -90,9 +90,6 @@
       index = (index + 1) % currentText.length;
     }
 
-    /* ==============================
-       1. SYNC WITH NAVBAR (PRIMARY)
-       ============================== */
     function syncWithNavbar() {
       const activeLink = document.querySelector(".nav-link.active");
       if (!activeLink) return false;
@@ -105,36 +102,45 @@
       return true;
     }
 
-    /* ==============================
-       2. INTERSECTION OBSERVER (FALLBACK)
-       ============================== */
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (
-            entry.isIntersecting &&
-            titleMap[entry.target.id] &&
-            !syncWithNavbar()
-          ) {
-            currentText = titleMap[entry.target.id];
-            index = 0;
-          }
-        });
-      },
-      {
-        rootMargin: "-40% 0px -40% 0px",
-        threshold: 0,
+    function initObserverWhenReady() {
+      const sections = document.querySelectorAll("section[id]");
+
+      if (!sections.length) {
+        // React belum render → coba lagi
+        requestAnimationFrame(initObserverWhenReady);
+        return;
       }
-    );
 
-    document.querySelectorAll("section[id]").forEach((section) => {
-      observer.observe(section);
-    });
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (
+              entry.isIntersecting &&
+              titleMap[entry.target.id] &&
+              !syncWithNavbar()
+            ) {
+              currentText = titleMap[entry.target.id];
+              index = 0;
+            }
+          });
+        },
+        {
+          rootMargin: "-40% 0px -40% 0px",
+          threshold: 0,
+        }
+      );
 
+      sections.forEach((section) => observer.observe(section));
+    }
+
+    // Start animation
     setInterval(animateTitle, 300);
 
-    // Initial sync
-    syncWithNavbar();
+    // Init AFTER React render
+    initObserverWhenReady();
+
+    // Initial navbar sync
+    setTimeout(syncWithNavbar, 300);
   </script>
 </body>
 
