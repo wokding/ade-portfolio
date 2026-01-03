@@ -7,7 +7,6 @@ import {
 } from "lucide-react";
 import profile from "./assets/profile.jpg";
 import cv from "./assets/Ade-Naufal-Rianto-CV.pdf";
-import doorlockDemo from "./assets/doorlock-demo.gif";
 
 const Toast = ({ message, type = "success", onClose }) => {
   useEffect(() => {
@@ -44,6 +43,7 @@ export default function App() {
   const [modalProject, setModalProject] = useState(null);
   const modalRef = useRef(null);
   const doorlockVideoUrl = (import.meta.env.VITE_DOORLOCK_VIDEO_URL || "").trim();
+  const aprioriVideoUrl = (import.meta.env.VITE_APRIORI_VIDEO_URL || "").trim();
 
   useEffect(() => {
     // Lazy-load project demo GIF when it enters the viewport
@@ -712,7 +712,6 @@ export default function App() {
                         doorlockVideoUrl ? (
                           <video
                             src={doorlockVideoUrl}
-                            poster={doorlockDemo}
                             muted
                             loop
                             playsInline
@@ -720,11 +719,10 @@ export default function App() {
                             controls
                           />
                         ) : (
-                          <img
-                            src={doorlockDemo}
-                            alt="IoT Smart Door Lock System Demo"
-                            loading="lazy"
-                          />
+                          <div className="demo-placeholder" aria-label="Doorlock demo unavailable">
+                            <div className="placeholder-art" aria-hidden="true" />
+                            <span>Doorlock demo video belum tersedia.</span>
+                          </div>
                         )
                       ) : (
                         <div className="demo-placeholder">
@@ -801,6 +799,24 @@ export default function App() {
 
                 {project.id === 3 && (
                   <>
+                    <div className="project-demo">
+                      {aprioriVideoUrl ? (
+                        <video
+                          src={aprioriVideoUrl}
+                          muted
+                          loop
+                          playsInline
+                          autoPlay
+                          controls
+                        />
+                      ) : (
+                        <div className="demo-placeholder" aria-label="Apriori demo unavailable">
+                          <div className="placeholder-art" aria-hidden="true" />
+                          <span>Apriori demo video belum tersedia.</span>
+                        </div>
+                      )}
+                    </div>
+
                     <p>
                       Developed a data mining system as part of an undergraduate thesis titled
                       <em>
@@ -984,7 +1000,6 @@ export default function App() {
                   {doorlockVideoUrl ? (
                     <video
                       src={doorlockVideoUrl}
-                      poster={doorlockDemo}
                       muted
                       loop
                       playsInline
@@ -992,7 +1007,29 @@ export default function App() {
                       controls
                     />
                   ) : (
-                    <img src={doorlockDemo} alt="IoT Smart Door Lock System Demo" />
+                    <div className="demo-placeholder" aria-label="Doorlock demo unavailable">
+                      <div className="placeholder-art" aria-hidden="true" />
+                      <span>Doorlock demo video belum tersedia.</span>
+                    </div>
+                  )}
+                </div>
+              )}
+              {modalProject.id === 3 && (
+                <div className="project-demo">
+                  {aprioriVideoUrl ? (
+                    <video
+                      src={aprioriVideoUrl}
+                      muted
+                      loop
+                      playsInline
+                      autoPlay
+                      controls
+                    />
+                  ) : (
+                    <div className="demo-placeholder" aria-label="Apriori demo unavailable">
+                      <div className="placeholder-art" aria-hidden="true" />
+                      <span>Apriori demo video belum tersedia.</span>
+                    </div>
                   )}
                 </div>
               )}
