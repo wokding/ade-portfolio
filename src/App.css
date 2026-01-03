@@ -760,16 +760,19 @@ body {
   text-align: center;
 }
 
-.project-demo img {
+.project-demo img,
+.project-demo video {
   max-width: 100%;
   height: auto;
   border-radius: 12px;
   border: 2px solid var(--border);
   box-shadow: var(--shadow-md);
   transition: transform 0.3s ease;
+  background: #000;
 }
 
-.project-demo img:hover {
+.project-demo img:hover,
+.project-demo video:hover {
   transform: scale(1.02);
 }
 
@@ -1321,7 +1324,8 @@ hr {
   margin-top: 0;
 }
 
-.modal-body .project-demo img {
+.modal-body .project-demo img,
+.modal-body .project-demo video {
   max-width: 100%;
   height: auto;
   display: block;

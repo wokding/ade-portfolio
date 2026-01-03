@@ -43,6 +43,7 @@ export default function App() {
   const [sending, setSending] = useState(false);
   const [modalProject, setModalProject] = useState(null);
   const modalRef = useRef(null);
+  const doorlockVideoUrl = (import.meta.env.VITE_DOORLOCK_VIDEO_URL || "").trim();
 
   useEffect(() => {
     // Lazy-load project demo GIF when it enters the viewport
@@ -708,18 +709,30 @@ export default function App() {
                   <>
                     <div className="project-demo" ref={demoRef}>
                       {demoVisible ? (
-                        <img
-                          src={doorlockDemo}
-                          alt="IoT Smart Door Lock System Demo"
-                          loading="lazy"
-                        />
+                        doorlockVideoUrl ? (
+                          <video
+                            src={doorlockVideoUrl}
+                            poster={doorlockDemo}
+                            muted
+                            loop
+                            playsInline
+                            autoPlay
+                            controls
+                          />
+                        ) : (
+                          <img
+                            src={doorlockDemo}
+                            alt="IoT Smart Door Lock System Demo"
+                            loading="lazy"
+                          />
+                        )
                       ) : (
                         <div className="demo-placeholder">
                           <div className="placeholder-art" aria-hidden="true" />
                           <button
                             className="btn-secondary"
                             onClick={() => setDemoVisible(true)}
-                            aria-label="Load demo video"
+                            aria-label="Load demo"
                           >
                             Load demo
                           </button>
@@ -968,7 +981,19 @@ export default function App() {
             <div className="modal-body">
               {modalProject.id === 1 && (
                 <div className="project-demo">
-                  <img src={doorlockDemo} alt="IoT Smart Door Lock System Demo" />
+                  {doorlockVideoUrl ? (
+                    <video
+                      src={doorlockVideoUrl}
+                      poster={doorlockDemo}
+                      muted
+                      loop
+                      playsInline
+                      autoPlay
+                      controls
+                    />
+                  ) : (
+                    <img src={doorlockDemo} alt="IoT Smart Door Lock System Demo" />
+                  )}
                 </div>
               )}
               <p style={{marginTop:12}}>
