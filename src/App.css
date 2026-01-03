@@ -721,7 +721,7 @@ body {
 .project-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 20px;
   margin-bottom: 20px;
 }
@@ -745,13 +745,14 @@ body {
 }
 
 .badge {
-  background: var(--accent);
-  color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
+  background: rgba(59,130,246,0.08);
+  color: var(--accent);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
   font-weight: 600;
   white-space: nowrap;
+  border: 1px solid rgba(59,130,246,0.12);
 }
 
 .project-demo {
