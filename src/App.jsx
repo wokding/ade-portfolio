@@ -75,8 +75,8 @@ export default function App() {
 
     setSending(true);
     try {
-      // Replace `yourFormId` with your Formspree form id when ready
-      const FORMSPREE_ENDPOINT = "https://formspree.io/f/yourFormId";
+      // Formspree endpoint (set to user's provided form)
+      const FORMSPREE_ENDPOINT = "https://formspree.io/f/xojvldao";
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
         headers: {
