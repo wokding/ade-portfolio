@@ -44,6 +44,7 @@ export default function App() {
   const modalRef = useRef(null);
   const doorlockVideoUrl = (import.meta.env.VITE_DOORLOCK_VIDEO_URL || "").trim();
   const aprioriVideoUrl = (import.meta.env.VITE_APRIORI_VIDEO_URL || "").trim();
+  const sifoVideoUrl = (import.meta.env.VITE_SIFO_VIDEO_URL || "").trim();
 
   useEffect(() => {
     // Lazy-load project demo GIF when it enters the viewport
@@ -768,6 +769,24 @@ export default function App() {
 
                 {project.id === 2 && (
                   <>
+                    <div className="project-demo">
+                      {sifoVideoUrl ? (
+                        <video
+                          src={sifoVideoUrl}
+                          muted
+                          loop
+                          playsInline
+                          autoPlay
+                          controls
+                        />
+                      ) : (
+                        <div className="demo-placeholder" aria-label="SIFO demo unavailable">
+                          <div className="placeholder-art" aria-hidden="true" />
+                          <span>SIFO demo video belum tersedia.</span>
+                        </div>
+                      )}
+                    </div>
+
                     <p>
                       Developed a web-based sales information system designed to manage product
                       data, customer transactions, and sales reporting. This project was also
@@ -1010,6 +1029,25 @@ export default function App() {
                     <div className="demo-placeholder" aria-label="Doorlock demo unavailable">
                       <div className="placeholder-art" aria-hidden="true" />
                       <span>Doorlock demo video belum tersedia.</span>
+                    </div>
+                  )}
+                </div>
+              )}
+              {modalProject.id === 2 && (
+                <div className="project-demo">
+                  {sifoVideoUrl ? (
+                    <video
+                      src={sifoVideoUrl}
+                      muted
+                      loop
+                      playsInline
+                      autoPlay
+                      controls
+                    />
+                  ) : (
+                    <div className="demo-placeholder" aria-label="SIFO demo unavailable">
+                      <div className="placeholder-art" aria-hidden="true" />
+                      <span>SIFO demo video belum tersedia.</span>
                     </div>
                   )}
                 </div>
