@@ -1071,12 +1071,127 @@ export default function App() {
                   )}
                 </div>
               )}
-              <p style={{marginTop:12}}>
-                {modalProject.title} — additional details and writeup. Replace this text with the full project description to give visitors a deeper understanding of the work, tech choices, and outcomes.
-              </p>
-              <div style={{marginTop:12}}>
-                <strong>Technologies:</strong> {modalProject.tech.join(", ")}
-              </div>
+              {modalProject.id === 1 && (
+                <>
+                  <p style={{marginTop:12}}>
+                    This IoT-based smart door lock system was developed to enhance physical access security by 
+                    integrating electronic locking mechanisms with programmable control logic using Arduino 
+                    microcontroller. The project demonstrates practical implementation of embedded systems 
+                    and IoT concepts for real-world security applications.
+                  </p>
+                  <h4 style={{marginTop:16}}>Key Features:</h4>
+                  <ul>
+                    <li>Arduino-based microcontroller system for reliable hardware control</li>
+                    <li>Electronic lock mechanism with relay module for actuator control</li>
+                    <li>Multiple authentication methods (keypad, RFID, or remote access)</li>
+                    <li>Real-time access logging and monitoring capabilities</li>
+                    <li>Battery backup system for uninterrupted operation</li>
+                  </ul>
+                  <h4 style={{marginTop:16}}>Technical Implementation:</h4>
+                  <p>
+                    The system architecture includes an Arduino microcontroller as the central processing unit, 
+                    interfaced with various input devices (keypad matrix, RFID reader) and output components 
+                    (electromagnetic lock, relay module, LCD display). The firmware was developed in C/C++ to 
+                    handle user authentication, access control logic, and secure lock/unlock operations.
+                  </p>
+                  <p>
+                    Special attention was given to security considerations including encrypted credential storage, 
+                    timeout mechanisms, and fail-safe modes. The system was thoroughly tested for reliability, 
+                    response time, and power efficiency.
+                  </p>
+                  <div style={{marginTop:12}}>
+                    <strong>Technologies:</strong> {modalProject.tech.join(", ")}
+                  </div>
+                  <div style={{marginTop:8}}>
+                    <strong>Source Code:</strong>{" "}
+                    <a href="https://github.com/wokding/arduino-doorlock-NEW" target="_blank" rel="noopener noreferrer">
+                      github.com/wokding/arduino-doorlock-NEW
+                    </a>
+                  </div>
+                </>
+              )}
+              {modalProject.id === 2 && (
+                <>
+                  <p style={{marginTop:12}}>
+                    SIFO Penjualan is a comprehensive web-based sales information system designed to streamline 
+                    product management, customer transactions, and sales reporting processes. This project was 
+                    developed as both a practical business solution and a learning tool for professional 
+                    certification under the Junior Web Developer competency scheme.
+                  </p>
+                  <h4 style={{marginTop:16}}>Core Functionality:</h4>
+                  <ul>
+                    <li>Product catalog management with categories, pricing, and inventory tracking</li>
+                    <li>Customer registration and profile management system</li>
+                    <li>Point of sale (POS) interface for quick transaction processing</li>
+                    <li>Sales reporting with filters for date range, product, and customer</li>
+                    <li>Role-based access control for admin, sales, and manager roles</li>
+                    <li>Invoice generation and printing capabilities</li>
+                  </ul>
+                  <h4 style={{marginTop:16}}>System Architecture:</h4>
+                  <p>
+                    Built using PHP backend with MySQL database for data persistence, the system follows 
+                    MVC (Model-View-Controller) pattern for clean code organization. The front-end utilizes 
+                    HTML5, CSS3, and JavaScript for responsive user interface design. Bootstrap framework 
+                    was integrated to ensure mobile-friendly layouts and consistent styling.
+                  </p>
+                  <p>
+                    Database design includes normalized tables for products, customers, transactions, and 
+                    transaction details, with proper indexing for optimized query performance. The system 
+                    implements input validation, SQL injection prevention, and session management for security.
+                  </p>
+                  <div style={{marginTop:12}}>
+                    <strong>Technologies:</strong> {modalProject.tech.join(", ")}
+                  </div>
+                  <div style={{marginTop:8}}>
+                    <strong>Source Code:</strong>{" "}
+                    <a href="https://github.com/wokding/sifopenjualan" target="_blank" rel="noopener noreferrer">
+                      github.com/wokding/sifopenjualan
+                    </a>
+                  </div>
+                </>
+              )}
+              {modalProject.id === 3 && (
+                <>
+                  <p style={{marginTop:12}}>
+                    This data mining project implements the Apriori algorithm to analyze sales patterns of 
+                    over-the-counter medicines at Kimia Farma Pharmacy. Completed as an undergraduate thesis, 
+                    the system discovers meaningful association rules to support inventory planning and 
+                    product placement strategies. The research earned <strong>Cum Laude</strong> distinction.
+                  </p>
+                  <h4 style={{marginTop:16}}>Research Objectives:</h4>
+                  <ul>
+                    <li>Identify frequently purchased medicine combinations (frequent itemsets)</li>
+                    <li>Discover association rules between products with high confidence levels</li>
+                    <li>Provide actionable insights for inventory optimization</li>
+                    <li>Support cross-selling and product bundling decisions</li>
+                  </ul>
+                  <h4 style={{marginTop:16}}>Methodology:</h4>
+                  <p>
+                    Transaction data from Kimia Farma Pharmacy Summarecon Bekasi was collected and preprocessed 
+                    to remove noise and inconsistencies. The Apriori algorithm was implemented to generate 
+                    candidate itemsets and prune those below minimum support threshold. Association rules 
+                    were then extracted and evaluated based on support, confidence, and lift metrics.
+                  </p>
+                  <p>
+                    The analysis revealed significant patterns such as common medicine combinations purchased 
+                    together, seasonal trends, and complementary product relationships. Results were visualized 
+                    using charts and tables to present findings in business-friendly formats.
+                  </p>
+                  <h4 style={{marginTop:16}}>Technical Details:</h4>
+                  <p>
+                    Developed using Python with libraries including Pandas for data manipulation, Mlxtend 
+                    for Apriori algorithm implementation, and Matplotlib/Seaborn for data visualization. 
+                    The system includes data preprocessing pipeline, algorithm parameter tuning, and 
+                    interactive result exploration interface.
+                  </p>
+                  <div style={{marginTop:12}}>
+                    <strong>Technologies:</strong> {modalProject.tech.join(", ")}
+                  </div>
+                  <div style={{marginTop:8}}>
+                    <strong>Academic Achievement:</strong> Graduated with <strong>Cum Laude</strong> honors
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
