@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Don't rewrite files or directories
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  
+  # Don't rewrite asset files (js, css, images, fonts, etc)
+  RewriteCond %{REQUEST_URI} \.(js|css|jpg|jpeg|png|gif|svg|ico|pdf|woff|woff2|ttf|eot|mp4|webm)$ [NC]
+  RewriteRule ^ - [L]
+  
+  # Rewrite everything else to index.html
+  RewriteRule ^ /index.html [L]
+</IfModule>
