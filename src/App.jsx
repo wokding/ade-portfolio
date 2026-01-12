@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import {
   Moon, Sun, Mail, Phone, Linkedin, Github, 
   Code, Award, Briefcase, FileText, CheckCircle,
-  ArrowRight, Filter, X
+  ArrowRight, Filter, X, ExternalLink, Globe
 } from "lucide-react";
 import profile from "./assets/profile.jpg";
 import cv from "./assets/Ade-Naufal-Rianto-CV.pdf";
@@ -788,16 +788,34 @@ export default function App() {
                       <li>Created technical documentation covering system architecture, wiring, and code structure.</li>
                     </ul>
 
-                    <p>
-                      Source Code:{" "}
-                      <a
-                        href="https://github.com/wokding/arduino-doorlock-NEW"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        github.com/wokding/arduino-doorlock-NEW
-                      </a>
-                    </p>
+                    <div style={{display: "flex", flexDirection: "column", gap: 8, marginTop: 12}}>
+                      <div style={{display: "flex", alignItems: "center", gap: 8}}>
+                        <Globe size={16} style={{flexShrink: 0}} />
+                        <strong>Demo:</strong>{" "}
+                        <a
+                          href="https://wokwi.com/projects/439156597558534145"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{display: "flex", alignItems: "center", gap: 4}}
+                        >
+                          wokwi.com/projects/439156597558534145
+                          <ExternalLink size={14} />
+                        </a>
+                      </div>
+                      <div style={{display: "flex", alignItems: "center", gap: 8}}>
+                        <Github size={16} style={{flexShrink: 0}} />
+                        <strong>Source Code:</strong>{" "}
+                        <a
+                          href="https://github.com/wokding/arduino-doorlock-NEW"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{display: "flex", alignItems: "center", gap: 4}}
+                        >
+                          github.com/wokding/arduino-doorlock-NEW
+                          <ExternalLink size={14} />
+                        </a>
+                      </div>
+                    </div>
                   </>
                 )}
 
@@ -837,16 +855,34 @@ export default function App() {
                       <li>Prepared technical documentation to support evaluation, deployment, and future enhancements.</li>
                     </ul>
 
-                    <p>
-                      Source Code:{" "}
-                      <a
-                        href="https://github.com/wokding/sifopenjualan"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        github.com/wokding/sifopenjualan
-                      </a>
-                    </p>
+                    <div style={{display: "flex", flexDirection: "column", gap: 8, marginTop: 12}}>
+                      <div style={{display: "flex", alignItems: "center", gap: 8}}>
+                        <Globe size={16} style={{flexShrink: 0}} />
+                        <strong>Live Demo:</strong>{" "}
+                        <a
+                          href="https://sipenjual.free.nf/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{display: "flex", alignItems: "center", gap: 4}}
+                        >
+                          sipenjual.free.nf
+                          <ExternalLink size={14} />
+                        </a>
+                      </div>
+                      <div style={{display: "flex", alignItems: "center", gap: 8}}>
+                        <Github size={16} style={{flexShrink: 0}} />
+                        <strong>Source Code:</strong>{" "}
+                        <a
+                          href="https://github.com/wokding/sifopenjualan"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{display: "flex", alignItems: "center", gap: 4}}
+                        >
+                          github.com/wokding/sifopenjualan
+                          <ExternalLink size={14} />
+                        </a>
+                      </div>
+                    </div>
                   </>
                 )}
 
@@ -894,6 +930,35 @@ export default function App() {
                         academic results</strong>, and the author graduated with the
                       <strong> Cum Laude </strong> distinction.
                     </p>
+
+                    <div style={{display: "flex", flexDirection: "column", gap: 8, marginTop: 12}}>
+                      <div style={{display: "flex", alignItems: "center", gap: 8}}>
+                        <Globe size={16} style={{flexShrink: 0}} />
+                        <strong>Live Demo:</strong>{" "}
+                        <a
+                          href="https://siapriori.free.nf/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{display: "flex", alignItems: "center", gap: 4}}
+                        >
+                          siapriori.free.nf
+                          <ExternalLink size={14} />
+                        </a>
+                      </div>
+                      <div style={{display: "flex", alignItems: "center", gap: 8}}>
+                        <Github size={16} style={{flexShrink: 0}} />
+                        <strong>Source Code:</strong>{" "}
+                        <a
+                          href="https://github.com/wokding/apriori"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{display: "flex", alignItems: "center", gap: 4}}
+                        >
+                          github.com/wokding/apriori
+                          <ExternalLink size={14} />
+                        </a>
+                      </div>
+                    </div>
                   </>
                 )}
               </div>
@@ -1136,10 +1201,20 @@ export default function App() {
                   <div style={{marginTop:12}}>
                     <strong>Technologies:</strong> {modalProject.tech.join(", ")}
                   </div>
-                  <div style={{marginTop:8}}>
+                  <div style={{marginTop:8, display: "flex", alignItems: "center", gap: 8}}>
+                    <Globe size={16} style={{flexShrink: 0}} />
+                    <strong>Demo:</strong>{" "}
+                    <a href="https://wokwi.com/projects/439156597558534145" target="_blank" rel="noopener noreferrer" style={{display: "flex", alignItems: "center", gap: 4}}>
+                      wokwi.com/projects/439156597558534145
+                      <ExternalLink size={14} />
+                    </a>
+                  </div>
+                  <div style={{marginTop:8, display: "flex", alignItems: "center", gap: 8}}>
+                    <Github size={16} style={{flexShrink: 0}} />
                     <strong>Source Code:</strong>{" "}
-                    <a href="https://github.com/wokding/arduino-doorlock-NEW" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/wokding/arduino-doorlock-NEW" target="_blank" rel="noopener noreferrer" style={{display: "flex", alignItems: "center", gap: 4}}>
                       github.com/wokding/arduino-doorlock-NEW
+                      <ExternalLink size={14} />
                     </a>
                   </div>
                 </>
@@ -1176,10 +1251,20 @@ export default function App() {
                   <div style={{marginTop:12}}>
                     <strong>Technologies:</strong> {modalProject.tech.join(", ")}
                   </div>
-                  <div style={{marginTop:8}}>
+                  <div style={{marginTop:8, display: "flex", alignItems: "center", gap: 8}}>
+                    <Globe size={16} style={{flexShrink: 0}} />
+                    <strong>Live Demo:</strong>{" "}
+                    <a href="https://sipenjual.free.nf/" target="_blank" rel="noopener noreferrer" style={{display: "flex", alignItems: "center", gap: 4}}>
+                      sipenjual.free.nf
+                      <ExternalLink size={14} />
+                    </a>
+                  </div>
+                  <div style={{marginTop:8, display: "flex", alignItems: "center", gap: 8}}>
+                    <Github size={16} style={{flexShrink: 0}} />
                     <strong>Source Code:</strong>{" "}
-                    <a href="https://github.com/wokding/sifopenjualan" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/wokding/sifopenjualan" target="_blank" rel="noopener noreferrer" style={{display: "flex", alignItems: "center", gap: 4}}>
                       github.com/wokding/sifopenjualan
+                      <ExternalLink size={14} />
                     </a>
                   </div>
                 </>
@@ -1223,6 +1308,22 @@ export default function App() {
                   </div>
                   <div style={{marginTop:8}}>
                     <strong>Academic Achievement:</strong> Graduated with <strong>Cum Laude</strong> honors
+                  </div>
+                  <div style={{marginTop:8, display: "flex", alignItems: "center", gap: 8}}>
+                    <Globe size={16} style={{flexShrink: 0}} />
+                    <strong>Live Demo:</strong>{" "}
+                    <a href="https://siapriori.free.nf/" target="_blank" rel="noopener noreferrer" style={{display: "flex", alignItems: "center", gap: 4}}>
+                      siapriori.free.nf
+                      <ExternalLink size={14} />
+                    </a>
+                  </div>
+                  <div style={{marginTop:8, display: "flex", alignItems: "center", gap: 8}}>
+                    <Github size={16} style={{flexShrink: 0}} />
+                    <strong>Source Code:</strong>{" "}
+                    <a href="https://github.com/wokding/apriori" target="_blank" rel="noopener noreferrer" style={{display: "flex", alignItems: "center", gap: 4}}>
+                      github.com/wokding/apriori
+                      <ExternalLink size={14} />
+                    </a>
                   </div>
                 </>
               )}
