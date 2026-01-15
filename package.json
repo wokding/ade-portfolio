@@ -7,8 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "build:github": "vite build",
-    "build:infinityfree": "cross-env VITE_BASE_PATH=/ vite build",
-    "deploy": "npm run build:github && gh-pages -d dist"
+    "build:infinityfree": "cross-env VITE_BASE_PATH=/ vite build && node scripts/prepare-infinityfree.js",
+    "deploy": "npm run build:github && gh-pages -d dist",
+    "deploy:infinityfree": "npm run build:infinityfree"
   },
   "dependencies": {
     "lucide-react": "^0.562.0",
