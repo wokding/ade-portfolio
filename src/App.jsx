@@ -1351,6 +1351,165 @@ export default function App() {
             <div className="modal-body">
               {modalProject.id === 1 && (
                 <>
+                  <div style={{position: "relative", marginBottom: "1.5rem"}}>
+                    <img
+                      src={networkMonitoringImages[networkMonitoringSlide].src}
+                      alt={networkMonitoringImages[networkMonitoringSlide].title}
+                      onClick={() => setZoomedImage(networkMonitoringImages[networkMonitoringSlide])}
+                      style={{
+                        width: "100%", 
+                        height: "auto", 
+                        display: "block", 
+                        cursor: "zoom-in", 
+                        borderRadius: "8px",
+                        boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
+                      }}
+                    />
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setIsAutoPlaying(false);
+                        setNetworkMonitoringSlide((prev) => (prev === 0 ? networkMonitoringImages.length - 1 : prev - 1));
+                      }}
+                      style={{
+                        position: "absolute",
+                        left: "10px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        backgroundColor: "rgba(0, 0, 0, 0.6)",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "50%",
+                        width: "40px",
+                        height: "40px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                        zIndex: 10,
+                        transition: "background-color 0.2s"
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.8)"}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.6)"}
+                      aria-label="Previous slide"
+                    >
+                      <ChevronLeft size={24} />
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setIsAutoPlaying(false);
+                        setNetworkMonitoringSlide((prev) => (prev === networkMonitoringImages.length - 1 ? 0 : prev + 1));
+                      }}
+                      style={{
+                        position: "absolute",
+                        right: "10px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        backgroundColor: "rgba(0, 0, 0, 0.6)",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "50%",
+                        width: "40px",
+                        height: "40px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                        zIndex: 10,
+                        transition: "background-color 0.2s"
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.8)"}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.6)"}
+                      aria-label="Next slide"
+                    >
+                      <ChevronRight size={24} />
+                    </button>
+                    <div style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      marginTop: "12px",
+                      padding: "8px 0"
+                    }}>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setIsAutoPlaying(!isAutoPlaying);
+                        }}
+                        style={{
+                          backgroundColor: "var(--bg-secondary)",
+                          color: "var(--text-primary)",
+                          border: "1px solid var(--border)",
+                          borderRadius: "6px",
+                          padding: "8px 16px",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "6px",
+                          cursor: "pointer",
+                          fontSize: "14px",
+                          fontWeight: "500",
+                          transition: "all 0.2s"
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = "var(--bg-tertiary)";
+                          e.currentTarget.style.transform = "translateY(-1px)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = "var(--bg-secondary)";
+                          e.currentTarget.style.transform = "translateY(0)";
+                        }}
+                        aria-label={isAutoPlaying ? "Pause slideshow" : "Play slideshow"}
+                      >
+                        {isAutoPlaying ? "⏸ Pause" : "▶ Play"}
+                      </button>
+                      <div style={{
+                        display: "flex",
+                        gap: "8px",
+                        alignItems: "center"
+                      }}>
+                        {networkMonitoringImages.map((_, idx) => (
+                          <button
+                            key={idx}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setIsAutoPlaying(false);
+                              setNetworkMonitoringSlide(idx);
+                            }}
+                            style={{
+                              width: "10px",
+                              height: "10px",
+                              borderRadius: "50%",
+                              border: "none",
+                              backgroundColor: networkMonitoringSlide === idx ? "var(--primary)" : "var(--border)",
+                              cursor: "pointer",
+                              padding: 0,
+                              transition: "all 0.2s"
+                            }}
+                            onMouseEnter={(e) => {
+                              if (networkMonitoringSlide !== idx) {
+                                e.currentTarget.style.backgroundColor = "var(--text-secondary)";
+                              }
+                            }}
+                            onMouseLeave={(e) => {
+                              if (networkMonitoringSlide !== idx) {
+                                e.currentTarget.style.backgroundColor = "var(--border)";
+                              }
+                            }}
+                            aria-label={`Go to slide ${idx + 1}`}
+                          />
+                        ))}
+                      </div>
+                      <div style={{
+                        color: "var(--text-secondary)",
+                        fontSize: "14px",
+                        fontWeight: "500"
+                      }}>
+                        {networkMonitoringImages[networkMonitoringSlide].title}
+                      </div>
+                    </div>
+                  </div>
+
                   <p style={{marginTop:12}}>
                     This network monitoring system was developed to provide automated network infrastructure 
                     monitoring, health checking, and performance analysis. The system helps network engineers 
