@@ -3,10 +3,18 @@ import { useEffect, useState, useRef } from "react";
 import {
   Moon, Sun, Mail, Phone, Linkedin, Github, 
   Code, Award, Briefcase, FileText, CheckCircle,
-  ArrowRight, Filter, X, ExternalLink, Globe
+  ArrowRight, Filter, X, ExternalLink, Globe, ChevronLeft, ChevronRight
 } from "lucide-react";
 import profile from "./assets/profile.jpg";
 import cv from "./assets/Ade-Naufal-Rianto-CV.pdf";
+
+// Network Monitoring Project Images
+import networkDashboard from "./assets/network-monitoring/dashboard.png";
+import networkUtilisasiFPC from "./assets/network-monitoring/utilisasifpc.png";
+import networkUtilisasiPort from "./assets/network-monitoring/utilisasiport.png";
+import networkAlarmStatus from "./assets/network-monitoring/alarmstatus.png";
+import networkHardwareInventory from "./assets/network-monitoring/hardwareinventory.png";
+import networkSystemPerformance from "./assets/network-monitoring/systemperformance.png";
 
 const Toast = ({ message, type = "success", onClose }) => {
   useEffect(() => {
@@ -42,9 +50,22 @@ export default function App() {
   const [sending, setSending] = useState(false);
   const [modalProject, setModalProject] = useState(null);
   const modalRef = useRef(null);
+  const [networkMonitoringSlide, setNetworkMonitoringSlide] = useState(0);
+  const [zoomedImage, setZoomedImage] = useState(null);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const doorlockVideoUrl = (import.meta.env.VITE_DOORLOCK_VIDEO_URL || "").trim();
   const aprioriVideoUrl = (import.meta.env.VITE_APRIORI_VIDEO_URL || "").trim();
   const sifoVideoUrl = (import.meta.env.VITE_SIFO_VIDEO_URL || "").trim();
+
+  // Network Monitoring Screenshots
+  const networkMonitoringImages = [
+    { src: networkDashboard, title: "Dashboard Summary" },
+    { src: networkUtilisasiFPC, title: "Utilisasi FPC" },
+    { src: networkUtilisasiPort, title: "Utilisasi Port" },
+    { src: networkAlarmStatus, title: "Alarm Status" },
+    { src: networkHardwareInventory, title: "Hardware Inventory" },
+    { src: networkSystemPerformance, title: "System Performance" }
+  ];
 
   useEffect(() => {
     // Lazy-load project demo GIF when it enters the viewport
@@ -66,6 +87,19 @@ export default function App() {
     // Fallback: if observer not available, load immediately
     setDemoVisible(true);
   }, [demoRef]);
+
+  // Auto-play carousel for Network Monitoring
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setNetworkMonitoringSlide((prev) => 
+        prev === networkMonitoringImages.length - 1 ? 0 : prev + 1
+      );
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, networkMonitoringImages.length]);
 
   const handleContactSubmit = async (e) => {
     e.preventDefault();
@@ -209,6 +243,7 @@ export default function App() {
 
   const projectCategories = {
     all: "All Projects",
+    network: "Network & Infrastructure",
     iot: "IoT & Hardware",
     web: "Web Development",
     datamining: "Data Mining"
@@ -239,18 +274,24 @@ export default function App() {
   const projects = [
     {
       id: 1,
+      category: "network",
+      title: "Network Monitoring System",
+      tech: ["Python", "Network", "Monitoring"],
+    },
+    {
+      id: 2,
       category: "iot",
       title: "IoT-Based Smart Door Lock System",
       tech: ["Arduino", "C/C++", "Electronics"]
     },
     {
-      id: 2,
+      id: 3,
       category: "web",
       title: "Sales Information System (SIFO Penjualan)",
       tech: ["Web", "Database", "PHP"]
     },
     {
-      id: 3,
+      id: 4,
       category: "datamining",
       title: "Sales Data Mining Using Apriori Algorithm",
       tech: ["Data Mining", "Python", "Business Intelligence"]
@@ -742,6 +783,201 @@ export default function App() {
 
                 {project.id === 1 && (
                   <>
+                    <div style={{position: "relative", marginBottom: "1rem"}}>
+                      <img
+                        src={networkMonitoringImages[networkMonitoringSlide].src}
+                        alt={networkMonitoringImages[networkMonitoringSlide].title}
+                        onClick={() => setZoomedImage(networkMonitoringImages[networkMonitoringSlide])}
+                        style={{
+                          width: "100%", 
+                          height: "auto", 
+                          display: "block", 
+                          cursor: "zoom-in", 
+                          borderRadius: "8px",
+                          boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
+                        }}
+                      />
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setIsAutoPlaying(false);
+                          setNetworkMonitoringSlide((prev) => (prev === 0 ? networkMonitoringImages.length - 1 : prev - 1));
+                        }}
+                        style={{
+                          position: "absolute",
+                          left: "10px",
+                          top: "50%",
+                          transform: "translateY(-50%)",
+                          backgroundColor: "rgba(0, 0, 0, 0.6)",
+                          color: "white",
+                          border: "none",
+                          borderRadius: "50%",
+                          width: "40px",
+                          height: "40px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          cursor: "pointer",
+                          zIndex: 10,
+                          transition: "background-color 0.2s"
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.8)"}
+                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.6)"}
+                        aria-label="Previous slide"
+                      >
+                        <ChevronLeft size={24} />
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setIsAutoPlaying(false);
+                          setNetworkMonitoringSlide((prev) => (prev === networkMonitoringImages.length - 1 ? 0 : prev + 1));
+                        }}
+                        style={{
+                          position: "absolute",
+                          right: "10px",
+                          top: "50%",
+                          transform: "translateY(-50%)",
+                          backgroundColor: "rgba(0, 0, 0, 0.6)",
+                          color: "white",
+                          border: "none",
+                          borderRadius: "50%",
+                          width: "40px",
+                          height: "40px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          cursor: "pointer",
+                          zIndex: 10,
+                          transition: "background-color 0.2s"
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.8)"}
+                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.6)"}
+                        aria-label="Next slide"
+                      >
+                        <ChevronRight size={24} />
+                      </button>
+                      <div style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        marginTop: "12px",
+                        padding: "8px 0"
+                      }}>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setIsAutoPlaying(!isAutoPlaying);
+                          }}
+                          style={{
+                            backgroundColor: "var(--bg-secondary)",
+                            color: "var(--text-primary)",
+                            border: "1px solid var(--border)",
+                            borderRadius: "6px",
+                            padding: "8px 16px",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "6px",
+                            cursor: "pointer",
+                            fontSize: "14px",
+                            fontWeight: "500",
+                            transition: "all 0.2s"
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = "var(--bg-tertiary)";
+                            e.currentTarget.style.transform = "translateY(-1px)";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = "var(--bg-secondary)";
+                            e.currentTarget.style.transform = "translateY(0)";
+                          }}
+                          aria-label={isAutoPlaying ? "Pause slideshow" : "Play slideshow"}
+                        >
+                          {isAutoPlaying ? "⏸ Pause" : "▶ Play"}
+                        </button>
+                        <div style={{
+                          display: "flex",
+                          gap: "8px",
+                          alignItems: "center"
+                        }}>
+                          {networkMonitoringImages.map((_, idx) => (
+                            <button
+                              key={idx}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setIsAutoPlaying(false);
+                                setNetworkMonitoringSlide(idx);
+                              }}
+                              style={{
+                                width: "10px",
+                                height: "10px",
+                                borderRadius: "50%",
+                                border: "none",
+                                backgroundColor: networkMonitoringSlide === idx ? "var(--primary)" : "var(--border)",
+                                cursor: "pointer",
+                                padding: 0,
+                                transition: "all 0.2s"
+                              }}
+                              onMouseEnter={(e) => {
+                                if (networkMonitoringSlide !== idx) {
+                                  e.currentTarget.style.backgroundColor = "var(--text-secondary)";
+                                }
+                              }}
+                              onMouseLeave={(e) => {
+                                if (networkMonitoringSlide !== idx) {
+                                  e.currentTarget.style.backgroundColor = "var(--border)";
+                                }
+                              }}
+                              aria-label={`Go to slide ${idx + 1}`}
+                            />
+                          ))}
+                        </div>
+                        <div style={{
+                          color: "var(--text-secondary)",
+                          fontSize: "14px",
+                          fontWeight: "500"
+                        }}>
+                          {networkMonitoringImages[networkMonitoringSlide].title}
+                        </div>
+                      </div>
+                    </div>
+
+                    <p>
+                      Developed a network monitoring system to track and analyze network device status,
+                      performance metrics, and connectivity health in real-time. This project demonstrates
+                      practical application of network automation and monitoring concepts using Python
+                      scripting and network protocols.
+                    </p>
+
+                    <ul>
+                      <li>Implemented automated network device monitoring using ICMP (ping) and SNMP protocols.</li>
+                      <li>Developed Python scripts to collect performance metrics and device availability data.</li>
+                      <li>Created alerting mechanisms to notify administrators of network issues and anomalies.</li>
+                      <li>Built data visualization dashboards to display network health and historical trends.</li>
+                      <li>Integrated logging system for incident tracking and troubleshooting support.</li>
+                      <li>Documented system architecture, configuration procedures, and monitoring workflows.</li>
+                    </ul>
+
+                    <div style={{display: "flex", flexDirection: "column", gap: 8, marginTop: 12}}>
+                      <div style={{display: "flex", alignItems: "center", gap: 8}}>
+                        <Github size={16} style={{flexShrink: 0}} />
+                        <strong>Source Code:</strong>{" "}
+                        <a
+                          href="https://github.com/wokding/monitoringnetwork"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{display: "flex", alignItems: "center", gap: 4}}
+                        >
+                          github.com/wokding/monitoringnetwork
+                          <ExternalLink size={14} />
+                        </a>
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {project.id === 2 && (
+                  <>
                     <div className="project-demo" ref={demoRef}>
                       {demoVisible ? (
                         doorlockVideoUrl ? (
@@ -819,7 +1055,7 @@ export default function App() {
                   </>
                 )}
 
-                {project.id === 2 && (
+                {project.id === 3 && (
                   <>
                     <div className="project-demo">
                       {sifoVideoUrl ? (
@@ -886,7 +1122,7 @@ export default function App() {
                   </>
                 )}
 
-                {project.id === 3 && (
+                {project.id === 4 && (
                   <>
                     <div className="project-demo">
                       {aprioriVideoUrl ? (
@@ -1114,6 +1350,55 @@ export default function App() {
             <p className="project-category">{projectCategories[modalProject.category]}</p>
             <div className="modal-body">
               {modalProject.id === 1 && (
+                <>
+                  <p style={{marginTop:12}}>
+                    This network monitoring system was developed to provide automated network infrastructure 
+                    monitoring, health checking, and performance analysis. The system helps network engineers 
+                    proactively identify issues, track device status, and maintain optimal network performance 
+                    through continuous monitoring and alerting mechanisms.
+                  </p>
+                  <h4 style={{marginTop:16}}>Key Features:</h4>
+                  <ul>
+                    <li>Real-time network device availability monitoring using ICMP ping</li>
+                    <li>SNMP-based performance metric collection (bandwidth, CPU, memory usage)</li>
+                    <li>Automated alerting system for device down events and threshold violations</li>
+                    <li>Historical data storage and trend analysis capabilities</li>
+                    <li>Web-based dashboard for visualization and reporting</li>
+                    <li>Multi-device support with customizable monitoring intervals</li>
+                  </ul>
+                  <h4 style={{marginTop:16}}>Technical Implementation:</h4>
+                  <p>
+                    Built using Python with libraries including Scapy for ICMP operations, PySNMP for SNMP 
+                    polling, and Flask for web interface. The monitoring engine runs as a background service, 
+                    continuously checking configured network devices and collecting performance metrics at 
+                    specified intervals.
+                  </p>
+                  <p>
+                    Data is stored in SQLite database for historical analysis and trend reporting. The alert 
+                    system supports multiple notification methods including email and log files. The web 
+                    dashboard provides real-time status views and historical graphs for performance analysis.
+                  </p>
+                  <h4 style={{marginTop:16}}>Use Cases:</h4>
+                  <ul>
+                    <li>Small to medium enterprise network monitoring</li>
+                    <li>Network troubleshooting and incident management support</li>
+                    <li>Performance baseline establishment and capacity planning</li>
+                    <li>Network automation and DevOps integration</li>
+                  </ul>
+                  <div style={{marginTop:12}}>
+                    <strong>Technologies:</strong> {modalProject.tech.join(", ")}
+                  </div>
+                  <div style={{marginTop:8, display: "flex", alignItems: "center", gap: 8}}>
+                    <Github size={16} style={{flexShrink: 0}} />
+                    <strong>Source Code:</strong>{" "}
+                    <a href="https://github.com/wokding/monitoringnetwork" target="_blank" rel="noopener noreferrer" style={{display: "flex", alignItems: "center", gap: 4}}>
+                      github.com/wokding/monitoringnetwork
+                      <ExternalLink size={14} />
+                    </a>
+                  </div>
+                </>
+              )}
+              {modalProject.id === 2 && (
                 <div className="project-demo">
                   {doorlockVideoUrl ? (
                     <video
@@ -1132,7 +1417,7 @@ export default function App() {
                   )}
                 </div>
               )}
-              {modalProject.id === 2 && (
+              {modalProject.id === 3 && (
                 <div className="project-demo">
                   {sifoVideoUrl ? (
                     <video
@@ -1151,7 +1436,7 @@ export default function App() {
                   )}
                 </div>
               )}
-              {modalProject.id === 3 && (
+              {modalProject.id === 4 && (
                 <div className="project-demo">
                   {aprioriVideoUrl ? (
                     <video
@@ -1170,7 +1455,7 @@ export default function App() {
                   )}
                 </div>
               )}
-              {modalProject.id === 1 && (
+              {modalProject.id === 2 && (
                 <>
                   <p style={{marginTop:12}}>
                     This IoT-based smart door lock system was developed to enhance physical access security by 
@@ -1219,7 +1504,7 @@ export default function App() {
                   </div>
                 </>
               )}
-              {modalProject.id === 2 && (
+              {modalProject.id === 3 && (
                 <>
                   <p style={{marginTop:12}}>
                     SIFO Penjualan is a comprehensive web-based sales information system designed to streamline 
@@ -1269,7 +1554,7 @@ export default function App() {
                   </div>
                 </>
               )}
-              {modalProject.id === 3 && (
+              {modalProject.id === 4 && (
                 <>
                   <p style={{marginTop:12}}>
                     This data mining project implements the Apriori algorithm to analyze sales patterns of 
@@ -1327,6 +1612,84 @@ export default function App() {
                   </div>
                 </>
               )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {zoomedImage && (
+        <div 
+          className="modal-overlay" 
+          role="presentation" 
+          onClick={() => setZoomedImage(null)}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.9)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 10000,
+            padding: "20px"
+          }}
+        >
+          <div style={{
+            position: "relative",
+            maxWidth: "95vw",
+            maxHeight: "95vh",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center"
+          }}>
+            <button 
+              onClick={() => setZoomedImage(null)}
+              style={{
+                position: "absolute",
+                top: "-40px",
+                right: "0",
+                backgroundColor: "rgba(255, 255, 255, 0.2)",
+                color: "white",
+                border: "none",
+                borderRadius: "50%",
+                width: "40px",
+                height: "40px",
+                fontSize: "24px",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                zIndex: 10001
+              }}
+              aria-label="Close zoom"
+            >
+              ×
+            </button>
+            <img
+              src={zoomedImage.src}
+              alt={zoomedImage.title}
+              style={{
+                maxWidth: "100%",
+                maxHeight: "90vh",
+                objectFit: "contain",
+                borderRadius: "8px",
+                boxShadow: "0 10px 40px rgba(0, 0, 0, 0.5)"
+              }}
+              onClick={(e) => e.stopPropagation()}
+            />
+            <div style={{
+              marginTop: "16px",
+              backgroundColor: "rgba(0, 0, 0, 0.7)",
+              color: "white",
+              padding: "12px 24px",
+              borderRadius: "8px",
+              fontSize: "16px",
+              fontWeight: "500",
+              textAlign: "center"
+            }}>
+              {zoomedImage.title}
             </div>
           </div>
         </div>
