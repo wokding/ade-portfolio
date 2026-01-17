@@ -786,6 +786,49 @@ body {
   margin: 28px 0;
 }
 
+/* Project Links Container */
+.project-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.project-link-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px;
+  background: rgba(59, 130, 246, 0.03);
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.project-link-item:hover {
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.project-link-item svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.project-link-item strong {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.project-link-item a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  flex: 1;
+  min-width: 0;
+}
+
 /* ==================== CONTACT ==================== */
 
 .contact-list {
@@ -1195,6 +1238,19 @@ hr {
 
   .tech-badges {
     justify-content: flex-start;
+  }
+
+  /* Project Links - Mobile Responsive */
+  .project-link-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .project-link-item a {
+    font-size: 0.85rem;
+    word-break: break-all;
   }
 
   .contact-list {

@@ -52,7 +52,6 @@ export default function App() {
   const modalRef = useRef(null);
   const [networkMonitoringSlide, setNetworkMonitoringSlide] = useState(0);
   const [zoomedImage, setZoomedImage] = useState(null);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const doorlockVideoUrl = (import.meta.env.VITE_DOORLOCK_VIDEO_URL || "").trim();
   const aprioriVideoUrl = (import.meta.env.VITE_APRIORI_VIDEO_URL || "").trim();
   const sifoVideoUrl = (import.meta.env.VITE_SIFO_VIDEO_URL || "").trim();
@@ -87,19 +86,6 @@ export default function App() {
     // Fallback: if observer not available, load immediately
     setDemoVisible(true);
   }, [demoRef]);
-
-  // Auto-play carousel for Network Monitoring
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-    
-    const interval = setInterval(() => {
-      setNetworkMonitoringSlide((prev) => 
-        prev === networkMonitoringImages.length - 1 ? 0 : prev + 1
-      );
-    }, 3000); // Change slide every 3 seconds
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, networkMonitoringImages.length]);
 
   const handleContactSubmit = async (e) => {
     e.preventDefault();
@@ -600,7 +586,7 @@ export default function App() {
                 </a>
               </p>
 
-              <div style={{ marginTop: '1rem' }}>
+              <div style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <a
                   href="https://www.liputan6.com/citizen6/read/3204154/malam-puisi-ala-ukm-pena-muda-universitas-bhayangkara-bekasi"
                   target="_blank"
@@ -800,7 +786,6 @@ export default function App() {
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          setIsAutoPlaying(false);
                           setNetworkMonitoringSlide((prev) => (prev === 0 ? networkMonitoringImages.length - 1 : prev - 1));
                         }}
                         style={{
@@ -830,7 +815,6 @@ export default function App() {
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          setIsAutoPlaying(false);
                           setNetworkMonitoringSlide((prev) => (prev === networkMonitoringImages.length - 1 ? 0 : prev + 1));
                         }}
                         style={{
@@ -864,37 +848,6 @@ export default function App() {
                         marginTop: "12px",
                         padding: "8px 0"
                       }}>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setIsAutoPlaying(!isAutoPlaying);
-                          }}
-                          style={{
-                            backgroundColor: "var(--bg-secondary)",
-                            color: "var(--text-primary)",
-                            border: "1px solid var(--border)",
-                            borderRadius: "6px",
-                            padding: "8px 16px",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "6px",
-                            cursor: "pointer",
-                            fontSize: "14px",
-                            fontWeight: "500",
-                            transition: "all 0.2s"
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = "var(--bg-tertiary)";
-                            e.currentTarget.style.transform = "translateY(-1px)";
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = "var(--bg-secondary)";
-                            e.currentTarget.style.transform = "translateY(0)";
-                          }}
-                          aria-label={isAutoPlaying ? "Pause slideshow" : "Play slideshow"}
-                        >
-                          {isAutoPlaying ? "⏸ Pause" : "▶ Play"}
-                        </button>
                         <div style={{
                           display: "flex",
                           gap: "8px",
@@ -905,7 +858,6 @@ export default function App() {
                               key={idx}
                               onClick={(e) => {
                                 e.stopPropagation();
-                                setIsAutoPlaying(false);
                                 setNetworkMonitoringSlide(idx);
                               }}
                               style={{
@@ -958,15 +910,14 @@ export default function App() {
                       <li>Documented system architecture, configuration procedures, and monitoring workflows.</li>
                     </ul>
 
-                    <div style={{display: "flex", flexDirection: "column", gap: 8, marginTop: 12}}>
-                      <div style={{display: "flex", alignItems: "center", gap: 8}}>
-                        <Github size={16} style={{flexShrink: 0}} />
-                        <strong>Source Code:</strong>{" "}
+                    <div className="project-links">
+                      <div className="project-link-item">
+                        <Github size={16} />
+                        <strong>Source Code:</strong>
                         <a
                           href="https://github.com/wokding/monitoringnetwork"
                           target="_blank"
                           rel="noopener noreferrer"
-                          style={{display: "flex", alignItems: "center", gap: 4}}
                         >
                           github.com/wokding/monitoringnetwork
                           <ExternalLink size={14} />
@@ -1024,28 +975,26 @@ export default function App() {
                       <li>Created technical documentation covering system architecture, wiring, and code structure.</li>
                     </ul>
 
-                    <div style={{display: "flex", flexDirection: "column", gap: 8, marginTop: 12}}>
-                      <div style={{display: "flex", alignItems: "center", gap: 8}}>
-                        <Globe size={16} style={{flexShrink: 0}} />
-                        <strong>Demo:</strong>{" "}
+                    <div className="project-links">
+                      <div className="project-link-item">
+                        <Globe size={16} />
+                        <strong>Demo:</strong>
                         <a
                           href="https://wokwi.com/projects/439156597558534145"
                           target="_blank"
                           rel="noopener noreferrer"
-                          style={{display: "flex", alignItems: "center", gap: 4}}
                         >
                           wokwi.com/projects/439156597558534145
                           <ExternalLink size={14} />
                         </a>
                       </div>
-                      <div style={{display: "flex", alignItems: "center", gap: 8}}>
-                        <Github size={16} style={{flexShrink: 0}} />
-                        <strong>Source Code:</strong>{" "}
+                      <div className="project-link-item">
+                        <Github size={16} />
+                        <strong>Source Code:</strong>
                         <a
                           href="https://github.com/wokding/arduino-doorlock-NEW"
                           target="_blank"
                           rel="noopener noreferrer"
-                          style={{display: "flex", alignItems: "center", gap: 4}}
                         >
                           github.com/wokding/arduino-doorlock-NEW
                           <ExternalLink size={14} />
@@ -1091,28 +1040,26 @@ export default function App() {
                       <li>Prepared technical documentation to support evaluation, deployment, and future enhancements.</li>
                     </ul>
 
-                    <div style={{display: "flex", flexDirection: "column", gap: 8, marginTop: 12}}>
-                      <div style={{display: "flex", alignItems: "center", gap: 8}}>
-                        <Globe size={16} style={{flexShrink: 0}} />
-                        <strong>Live Demo:</strong>{" "}
+                    <div className="project-links">
+                      <div className="project-link-item">
+                        <Globe size={16} />
+                        <strong>Live Demo:</strong>
                         <a
                           href="https://sipenjual.free.nf/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          style={{display: "flex", alignItems: "center", gap: 4}}
                         >
                           sipenjual.free.nf
                           <ExternalLink size={14} />
                         </a>
                       </div>
-                      <div style={{display: "flex", alignItems: "center", gap: 8}}>
-                        <Github size={16} style={{flexShrink: 0}} />
-                        <strong>Source Code:</strong>{" "}
+                      <div className="project-link-item">
+                        <Github size={16} />
+                        <strong>Source Code:</strong>
                         <a
                           href="https://github.com/wokding/sifopenjualan"
                           target="_blank"
                           rel="noopener noreferrer"
-                          style={{display: "flex", alignItems: "center", gap: 4}}
                         >
                           github.com/wokding/sifopenjualan
                           <ExternalLink size={14} />
@@ -1167,28 +1114,26 @@ export default function App() {
                       <strong> Cum Laude </strong> distinction.
                     </p>
 
-                    <div style={{display: "flex", flexDirection: "column", gap: 8, marginTop: 12}}>
-                      <div style={{display: "flex", alignItems: "center", gap: 8}}>
-                        <Globe size={16} style={{flexShrink: 0}} />
-                        <strong>Live Demo:</strong>{" "}
+                    <div className="project-links">
+                      <div className="project-link-item">
+                        <Globe size={16} />
+                        <strong>Live Demo:</strong>
                         <a
                           href="https://siapriori.free.nf/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          style={{display: "flex", alignItems: "center", gap: 4}}
                         >
                           siapriori.free.nf
                           <ExternalLink size={14} />
                         </a>
                       </div>
-                      <div style={{display: "flex", alignItems: "center", gap: 8}}>
-                        <Github size={16} style={{flexShrink: 0}} />
-                        <strong>Source Code:</strong>{" "}
+                      <div className="project-link-item">
+                        <Github size={16} />
+                        <strong>Source Code:</strong>
                         <a
                           href="https://github.com/wokding/apriori"
                           target="_blank"
                           rel="noopener noreferrer"
-                          style={{display: "flex", alignItems: "center", gap: 4}}
                         >
                           github.com/wokding/apriori
                           <ExternalLink size={14} />
@@ -1368,7 +1313,6 @@ export default function App() {
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        setIsAutoPlaying(false);
                         setNetworkMonitoringSlide((prev) => (prev === 0 ? networkMonitoringImages.length - 1 : prev - 1));
                       }}
                       style={{
@@ -1398,7 +1342,6 @@ export default function App() {
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        setIsAutoPlaying(false);
                         setNetworkMonitoringSlide((prev) => (prev === networkMonitoringImages.length - 1 ? 0 : prev + 1));
                       }}
                       style={{
@@ -1432,37 +1375,6 @@ export default function App() {
                       marginTop: "12px",
                       padding: "8px 0"
                     }}>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setIsAutoPlaying(!isAutoPlaying);
-                        }}
-                        style={{
-                          backgroundColor: "var(--bg-secondary)",
-                          color: "var(--text-primary)",
-                          border: "1px solid var(--border)",
-                          borderRadius: "6px",
-                          padding: "8px 16px",
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "6px",
-                          cursor: "pointer",
-                          fontSize: "14px",
-                          fontWeight: "500",
-                          transition: "all 0.2s"
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = "var(--bg-tertiary)";
-                          e.currentTarget.style.transform = "translateY(-1px)";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = "var(--bg-secondary)";
-                          e.currentTarget.style.transform = "translateY(0)";
-                        }}
-                        aria-label={isAutoPlaying ? "Pause slideshow" : "Play slideshow"}
-                      >
-                        {isAutoPlaying ? "⏸ Pause" : "▶ Play"}
-                      </button>
                       <div style={{
                         display: "flex",
                         gap: "8px",
@@ -1473,7 +1385,6 @@ export default function App() {
                             key={idx}
                             onClick={(e) => {
                               e.stopPropagation();
-                              setIsAutoPlaying(false);
                               setNetworkMonitoringSlide(idx);
                             }}
                             style={{
@@ -1547,13 +1458,15 @@ export default function App() {
                   <div style={{marginTop:12}}>
                     <strong>Technologies:</strong> {modalProject.tech.join(", ")}
                   </div>
-                  <div style={{marginTop:8, display: "flex", alignItems: "center", gap: 8}}>
-                    <Github size={16} style={{flexShrink: 0}} />
-                    <strong>Source Code:</strong>{" "}
-                    <a href="https://github.com/wokding/monitoringnetwork" target="_blank" rel="noopener noreferrer" style={{display: "flex", alignItems: "center", gap: 4}}>
-                      github.com/wokding/monitoringnetwork
-                      <ExternalLink size={14} />
-                    </a>
+                  <div className="project-links">
+                    <div className="project-link-item">
+                      <Github size={16} />
+                      <strong>Source Code:</strong>
+                      <a href="https://github.com/wokding/monitoringnetwork" target="_blank" rel="noopener noreferrer">
+                        github.com/wokding/monitoringnetwork
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
                   </div>
                 </>
               )}
@@ -1645,21 +1558,23 @@ export default function App() {
                   <div style={{marginTop:12}}>
                     <strong>Technologies:</strong> {modalProject.tech.join(", ")}
                   </div>
-                  <div style={{marginTop:8, display: "flex", alignItems: "center", gap: 8}}>
-                    <Globe size={16} style={{flexShrink: 0}} />
-                    <strong>Demo:</strong>{" "}
-                    <a href="https://wokwi.com/projects/439156597558534145" target="_blank" rel="noopener noreferrer" style={{display: "flex", alignItems: "center", gap: 4}}>
-                      wokwi.com/projects/439156597558534145
-                      <ExternalLink size={14} />
-                    </a>
-                  </div>
-                  <div style={{marginTop:8, display: "flex", alignItems: "center", gap: 8}}>
-                    <Github size={16} style={{flexShrink: 0}} />
-                    <strong>Source Code:</strong>{" "}
-                    <a href="https://github.com/wokding/arduino-doorlock-NEW" target="_blank" rel="noopener noreferrer" style={{display: "flex", alignItems: "center", gap: 4}}>
-                      github.com/wokding/arduino-doorlock-NEW
-                      <ExternalLink size={14} />
-                    </a>
+                  <div className="project-links">
+                    <div className="project-link-item">
+                      <Globe size={16} />
+                      <strong>Demo:</strong>
+                      <a href="https://wokwi.com/projects/439156597558534145" target="_blank" rel="noopener noreferrer">
+                        wokwi.com/projects/439156597558534145
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
+                    <div className="project-link-item">
+                      <Github size={16} />
+                      <strong>Source Code:</strong>
+                      <a href="https://github.com/wokding/arduino-doorlock-NEW" target="_blank" rel="noopener noreferrer">
+                        github.com/wokding/arduino-doorlock-NEW
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
                   </div>
                 </>
               )}
@@ -1695,21 +1610,23 @@ export default function App() {
                   <div style={{marginTop:12}}>
                     <strong>Technologies:</strong> {modalProject.tech.join(", ")}
                   </div>
-                  <div style={{marginTop:8, display: "flex", alignItems: "center", gap: 8}}>
-                    <Globe size={16} style={{flexShrink: 0}} />
-                    <strong>Live Demo:</strong>{" "}
-                    <a href="https://sipenjual.free.nf/" target="_blank" rel="noopener noreferrer" style={{display: "flex", alignItems: "center", gap: 4}}>
-                      sipenjual.free.nf
-                      <ExternalLink size={14} />
-                    </a>
-                  </div>
-                  <div style={{marginTop:8, display: "flex", alignItems: "center", gap: 8}}>
-                    <Github size={16} style={{flexShrink: 0}} />
-                    <strong>Source Code:</strong>{" "}
-                    <a href="https://github.com/wokding/sifopenjualan" target="_blank" rel="noopener noreferrer" style={{display: "flex", alignItems: "center", gap: 4}}>
-                      github.com/wokding/sifopenjualan
-                      <ExternalLink size={14} />
-                    </a>
+                  <div className="project-links">
+                    <div className="project-link-item">
+                      <Globe size={16} />
+                      <strong>Live Demo:</strong>
+                      <a href="https://sipenjual.free.nf/" target="_blank" rel="noopener noreferrer">
+                        sipenjual.free.nf
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
+                    <div className="project-link-item">
+                      <Github size={16} />
+                      <strong>Source Code:</strong>
+                      <a href="https://github.com/wokding/sifopenjualan" target="_blank" rel="noopener noreferrer">
+                        github.com/wokding/sifopenjualan
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
                   </div>
                 </>
               )}
@@ -1753,21 +1670,23 @@ export default function App() {
                   <div style={{marginTop:8}}>
                     <strong>Academic Achievement:</strong> Graduated with <strong>Cum Laude</strong> honors
                   </div>
-                  <div style={{marginTop:8, display: "flex", alignItems: "center", gap: 8}}>
-                    <Globe size={16} style={{flexShrink: 0}} />
-                    <strong>Live Demo:</strong>{" "}
-                    <a href="https://siapriori.free.nf/" target="_blank" rel="noopener noreferrer" style={{display: "flex", alignItems: "center", gap: 4}}>
-                      siapriori.free.nf
-                      <ExternalLink size={14} />
-                    </a>
-                  </div>
-                  <div style={{marginTop:8, display: "flex", alignItems: "center", gap: 8}}>
-                    <Github size={16} style={{flexShrink: 0}} />
-                    <strong>Source Code:</strong>{" "}
-                    <a href="https://github.com/wokding/apriori" target="_blank" rel="noopener noreferrer" style={{display: "flex", alignItems: "center", gap: 4}}>
-                      github.com/wokding/apriori
-                      <ExternalLink size={14} />
-                    </a>
+                  <div className="project-links">
+                    <div className="project-link-item">
+                      <Globe size={16} />
+                      <strong>Live Demo:</strong>
+                      <a href="https://siapriori.free.nf/" target="_blank" rel="noopener noreferrer">
+                        siapriori.free.nf
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
+                    <div className="project-link-item">
+                      <Github size={16} />
+                      <strong>Source Code:</strong>
+                      <a href="https://github.com/wokding/apriori" target="_blank" rel="noopener noreferrer">
+                        github.com/wokding/apriori
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
                   </div>
                 </>
               )}
