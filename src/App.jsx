@@ -221,10 +221,15 @@ export default function App() {
 
   const skillCategories = {
     all: "All Skills",
-    routing: "Routing & Switching",
-    security: "Security",
-    monitoring: "Monitoring",
-    infrastructure: "Infrastructure"
+    core: "Core Skills",
+    additional: "Additional Skills",
+    "routing-switching": "Routing & Switching",
+    "network-infrastructure": "Network Infrastructure",
+    "security-monitoring": "Security & Monitoring",
+    "network-automation": "Network Automation & Tools",
+    "iot-embedded": "IoT & Embedded Systems",
+    "web-dev": "Web Development",
+    "data-analysis": "Data Analysis & BI"
   };
 
   const projectCategories = {
@@ -236,25 +241,55 @@ export default function App() {
   };
 
   const skills = {
-    routing: [
-      "Network Design & Operations",
-      "Routing & Switching (BGP, OSPF, IS-IS)",
-      "WAN, LAN, VPN, MPLS"
-    ],
-    infrastructure: [
-      "Juniper JunOS (MX, EX, SRX Series)",
-      "High Availability & Load Balancing",
-      "VLAN, STP, RSTP, MSTP, MC-LAG"
-    ],
-    security: [
-      "Firewall & Network Security",
-      "IPv4, IPv6, IP Addressing & Subnetting"
-    ],
-    monitoring: [
-      "Network Monitoring (SNMP, Syslog, NTP)",
-      "Troubleshooting & Incident Management",
-      "Network Documentation & Topology Diagram"
-    ]
+    core: {
+      "routing-switching": [
+        "Routing Protocols (BGP, OSPF, IS-IS)",
+        "WAN, LAN, VPN, MPLS",
+        "VLAN, STP, RSTP, MSTP, MC-LAG",
+        "IPv4, IPv6, IP Addressing & Subnetting",
+        "Network Protocols (TCP/IP, UDP, ARP, ICMP, DNS, DHCP)"
+      ],
+      "network-infrastructure": [
+        "Juniper JunOS (MX, EX, SRX Series)",
+        "High Availability & Load Balancing",
+        "Network Design & Operations",
+        "Network Troubleshooting & Root Cause Analysis",
+        "Network Documentation & Topology Diagram"
+      ],
+      "security-monitoring": [
+        "Firewall & Network Security",
+        "Network Monitoring (SNMP, Syslog, NTP)",
+        "Incident Management & Response",
+        "Security Policies & Access Control",
+        "Performance Monitoring & Optimization"
+      ],
+      "network-automation": [
+        "Python Scripting & Automation",
+        "Paramiko (SSH Automation)",
+        "Scapy (Packet Manipulation)",
+        "PySNMP (SNMP Protocol)",
+        "Network Configuration Management",
+        "Automated Reporting (openpyxl)",
+        "Bash Scripting & Linux Administration"
+      ]
+    },
+    additional: {
+      "iot-embedded": [
+        "Arduino Development (C/C++)",
+        "Hardware Integration (Keypad, LCD, RTC, Servo)",
+        "Embedded Systems Design"
+      ],
+      "web-dev": [
+        "Web Development (CodeIgniter, PHP)",
+        "Frontend (Bootstrap, HTML/CSS, JavaScript)",
+        "Database Management (MySQL, PostgreSQL)"
+      ],
+      "data-analysis": [
+        "Data Mining & Business Intelligence",
+        "Data Analysis (Pandas, Matplotlib)",
+        "Version Control (Git, GitHub)"
+      ]
+    }
   };
 
   const projects = [
@@ -262,25 +297,25 @@ export default function App() {
       id: 1,
       category: "network",
       title: "Network Monitoring System",
-      tech: ["Python", "Network", "Monitoring"],
+      tech: ["Python", "Paramiko", "Scapy", "PySNMP", "openpyxl"],
     },
     {
       id: 2,
       category: "iot",
       title: "IoT-Based Smart Door Lock System",
-      tech: ["Arduino", "C/C++", "Electronics"]
+      tech: ["Arduino", "C/C++", "Keypad 4x4", "LCD I2C", "RTC DS3231", "Servo"]
     },
     {
       id: 3,
       category: "web",
       title: "Sales Information System (SIFO Penjualan)",
-      tech: ["Web", "Database", "PHP"]
+      tech: ["CodeIgniter", "PHP", "MySQL", "Bootstrap", "JavaScript"]
     },
     {
       id: 4,
       category: "datamining",
       title: "Sales Data Mining Using Apriori Algorithm",
-      tech: ["Data Mining", "Python", "Business Intelligence"]
+      tech: ["Data Mining", "CodeIgniter", "PHP", "MySQL", "Bootstrap"]
     }
   ];
 
@@ -499,19 +534,78 @@ export default function App() {
 
           <div className="content-card fade-in-up">
             <div className="skills-grid">
-              {(skillFilter === "all" ? Object.entries(skills) : [[skillFilter, skills[skillFilter]]]).map(([category, skillList]) => (
-                <div key={category} className="skill-group">
-                  <h3>{skillCategories[category] || category}</h3>
-                  <ul>
-                    {skillList.map((skill, idx) => (
-                      <li key={idx} className="skill-item">
-                        <Code size={16} />
-                        <span>{skill}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+              {(() => {
+                // Show all categories and groups
+                if (skillFilter === "all") {
+                  return Object.entries(skills).map(([category, categoryData]) => (
+                    <div key={category} className="skill-category">
+                      <h3 className="category-title">{skillCategories[category]}</h3>
+                      {Object.entries(categoryData).map(([groupKey, skillList]) => (
+                        <div key={groupKey} className="skill-group">
+                          <h4>{skillCategories[groupKey]}</h4>
+                          <ul>
+                            {skillList.map((skill, idx) => (
+                              <li key={idx} className="skill-item">
+                                <Code size={16} />
+                                <span>{skill}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  ));
+                }
+                
+                // Show specific category (core or additional)
+                if (skillFilter === "core" || skillFilter === "additional") {
+                  const categoryData = skills[skillFilter];
+                  return (
+                    <div key={skillFilter} className="skill-category">
+                      <h3 className="category-title">{skillCategories[skillFilter]}</h3>
+                      {Object.entries(categoryData).map(([groupKey, skillList]) => (
+                        <div key={groupKey} className="skill-group">
+                          <h4>{skillCategories[groupKey]}</h4>
+                          <ul>
+                            {skillList.map((skill, idx) => (
+                              <li key={idx} className="skill-item">
+                                <Code size={16} />
+                                <span>{skill}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  );
+                }
+                
+                // Show specific group
+                const allGroups = { ...skills.core, ...skills.additional };
+                if (allGroups[skillFilter]) {
+                  const parentCategory = Object.keys(skills).find(cat => 
+                    skills[cat][skillFilter]
+                  );
+                  return (
+                    <div key={skillFilter} className="skill-category">
+                      <h3 className="category-title">{skillCategories[parentCategory]}</h3>
+                      <div className="skill-group">
+                        <h4>{skillCategories[skillFilter]}</h4>
+                        <ul>
+                          {allGroups[skillFilter].map((skill, idx) => (
+                            <li key={idx} className="skill-item">
+                              <Code size={16} />
+                              <span>{skill}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  );
+                }
+                
+                return null;
+              })()}
             </div>
           </div>
         </div>
@@ -1470,7 +1564,7 @@ export default function App() {
                   <h4 style={{marginTop:16}}>Technical Implementation:</h4>
                   <p>
                     Built using Python with libraries including Scapy for ICMP operations, PySNMP for SNMP 
-                    polling, and openpyxl/xlsxwriter for Excel file generation. The monitoring script runs 
+                    polling, Paramiko for SSH access, and openpyxl for Excel file generation. The monitoring script runs 
                     scheduled or on-demand to collect data from configured network devices and compile results 
                     into structured Excel workbooks with formatted tables, charts, and summary statistics.
                   </p>
@@ -1491,7 +1585,7 @@ export default function App() {
                     <li>Management reporting and compliance documentation</li>
                   </ul>
                   <div style={{marginTop:12}}>
-                    <strong>Technologies:</strong> Python, Scapy, PySNMP, openpyxl/xlsxwriter, Network Monitoring
+                    <strong>Technologies:</strong> Python, Paramiko, Scapy, PySNMP, openpyxl
                   </div>
                   <div className="project-links">
                     <div className="project-link-item">
