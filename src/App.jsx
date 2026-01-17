@@ -355,9 +355,10 @@ export default function App() {
           </p>
 
           <p className="hero-intro">
-            Experienced Network Engineer with 7+ years of hands-on experience
-            designing, operating, and maintaining enterprise and service provider
-            network infrastructures.
+            Network Engineer with 7+ years of progressive IT experience, 
+            from hands-on technical support to designing and managing enterprise-grade 
+            network infrastructures. Proven ability to deliver reliable, secure, and 
+            high-performance network solutions in mission-critical environments.
           </p>
 
           <div className="hero-actions">
@@ -382,13 +383,25 @@ export default function App() {
           <h2>About</h2>
           <div className="content-card fade-in-up">
             <p>
-              Network Engineer with 7+ years of experience in IT and telecommunications
-              environments, specializing in routing, switching, WAN, and IP-based
-              network infrastructure. Proven expertise in designing, implementing,
-              monitoring, and troubleshooting enterprise and service provider
-              networks. Strong capability in maintaining high availability,
-              performance, and security in mission-critical environments. Juniper-
-              certified professional with solid operational and analytical skills. Web development and programming skills are primarily applied for internal tools, academic projects, automation, and professional certification purposes, complementing my core role as a Network Engineer.
+              Network Engineer with a proven track record of growth from IT Support Technician 
+              to Enterprise Network Engineering role. Over 7+ years of progressive experience 
+              in IT infrastructure and telecommunications environments, combining hands-on technical 
+              expertise with strategic network planning and implementation.
+            </p>
+            <p>
+              My journey began providing frontline IT support and on-site engineering services, 
+              where I developed strong troubleshooting skills and deep understanding of end-user 
+              needs. This foundation proved invaluable as I transitioned into network engineering, 
+              specializing in enterprise routing, switching, WAN architectures, and IP-based 
+              network infrastructure design.
+            </p>
+            <p>
+              Currently focused on maintaining high-availability network environments for 
+              mission-critical business operations. Juniper-certified professional (JNCIS-SP, 
+              JNCIA-Junos) with expertise in BGP, OSPF, IS-IS, MPLS, and network security. 
+              Experienced in managing large-scale infrastructure projects, coordinating with 
+              cross-functional teams, and delivering technical solutions that balance performance, 
+              security, and operational efficiency.
             </p>
           </div>
         </div>
@@ -402,19 +415,31 @@ export default function App() {
             <p>Dear Hiring Manager,</p>
             <p>
               My name is Ade Naufal Rianto, and I am writing to express my
-              interest in the Network Engineer position. With over seven years
-              of hands-on experience in enterprise and telecommunications
-              environments, I have developed a strong foundation in designing,
-              implementing, and maintaining reliable and secure network
-              infrastructures.
+              interest in the Network Engineer position. My career path reflects 
+              a commitment to continuous growth and technical excellence—starting 
+              from hands-on IT support and field engineering, advancing through 
+              network operations, and culminating in enterprise network design and 
+              implementation roles.
             </p>
             <p>
-              Currently, I work as a Network Engineer at PT NEC Indonesia, where
-              I manage LAN, WAN, and VPN environments, configure routers,
-              switches, and firewalls, and ensure high availability across
-              mission-critical systems. My responsibilities also include
-              network monitoring, incident handling, root cause analysis, and
-              maintaining accurate network documentation.
+              Over seven years, I have built a comprehensive skill set that spans 
+              the entire IT infrastructure stack. Beginning as an IT Support Technician 
+              and on-site consultant, I gained invaluable experience in troubleshooting, 
+              user support, and understanding how technology impacts daily business 
+              operations. This foundation prepared me well for my current focus on 
+              enterprise network engineering, where I design, implement, and maintain 
+              mission-critical network infrastructures.
+            </p>
+            <p>
+              At PT NEC Indonesia, I progressed from IT Support Technician (2018-2023) 
+              to Network Engineer (2023-2025), demonstrating consistent growth in 
+              technical capabilities and responsibilities. In my network engineering role, 
+              I managed enterprise LAN/WAN/VPN environments, configured and maintained 
+              Juniper routers, switches, and firewalls, and ensured high availability 
+              across mission-critical telecommunications infrastructure. My experience 
+              includes network design, change management, incident response, root cause 
+              analysis, and comprehensive documentation—all critical for maintaining 
+              reliable service delivery.
             </p>
             <p>
               I hold Juniper certifications (JNCIS-SP and JNCIA-Junos) and have
@@ -710,7 +735,12 @@ export default function App() {
 
           <div className="content-card fade-in-up">
             <blockquote>
-              "Focused on maintaining high-availability and secure network infrastructures in enterprise and mission-critical environments. Experienced in operational excellence, incident management, and continuous service improvement, with strong attention to reliability, documentation, and teamwork."
+              "My career journey from IT Support to Network Engineering has taught me that great infrastructure 
+              starts with understanding end-user needs and operational realities. I approach every network design 
+              with a focus on reliability, performance, and maintainability—ensuring systems not only work today, 
+              but remain scalable and supportable for years to come. Whether troubleshooting a critical outage, 
+              implementing new routing protocols, or coordinating with field teams, I bring a balanced perspective 
+              of technical depth and practical operational experience."
             </blockquote>
           </div>
         </div>
@@ -896,17 +926,17 @@ export default function App() {
 
                     <p>
                       Developed a network monitoring system to track and analyze network device status,
-                      performance metrics, and connectivity health in real-time. This project demonstrates
-                      practical application of network automation and monitoring concepts using Python
-                      scripting and network protocols.
+                      performance metrics, and connectivity health. This Python-based automation tool 
+                      collects data through ICMP and SNMP protocols and generates comprehensive Excel 
+                      reports for network performance analysis and documentation.
                     </p>
 
                     <ul>
                       <li>Implemented automated network device monitoring using ICMP (ping) and SNMP protocols.</li>
                       <li>Developed Python scripts to collect performance metrics and device availability data.</li>
-                      <li>Created alerting mechanisms to notify administrators of network issues and anomalies.</li>
-                      <li>Built data visualization dashboards to display network health and historical trends.</li>
-                      <li>Integrated logging system for incident tracking and troubleshooting support.</li>
+                      <li>Generated Excel-based reports with device status, FPC utilization, port statistics, and alarm information.</li>
+                      <li>Created automated data aggregation and formatting for hardware inventory and system performance tracking.</li>
+                      <li>Built reporting templates to present network health metrics and historical trends in structured Excel format.</li>
                       <li>Documented system architecture, configuration procedures, and monitoring workflows.</li>
                     </ul>
 
@@ -1422,41 +1452,46 @@ export default function App() {
                   </div>
 
                   <p style={{marginTop:12}}>
-                    This network monitoring system was developed to provide automated network infrastructure 
-                    monitoring, health checking, and performance analysis. The system helps network engineers 
-                    proactively identify issues, track device status, and maintain optimal network performance 
-                    through continuous monitoring and alerting mechanisms.
+                    This network monitoring system was developed to automate network infrastructure monitoring 
+                    and reporting. The Python-based tool collects device status, performance metrics, and health 
+                    data through ICMP and SNMP protocols, then generates comprehensive Excel reports for analysis 
+                    and documentation. The system helps network engineers track device performance, identify issues, 
+                    and maintain detailed records of network infrastructure status.
                   </p>
                   <h4 style={{marginTop:16}}>Key Features:</h4>
                   <ul>
-                    <li>Real-time network device availability monitoring using ICMP ping</li>
-                    <li>SNMP-based performance metric collection (bandwidth, CPU, memory usage)</li>
-                    <li>Automated alerting system for device down events and threshold violations</li>
-                    <li>Historical data storage and trend analysis capabilities</li>
-                    <li>Web-based dashboard for visualization and reporting</li>
-                    <li>Multi-device support with customizable monitoring intervals</li>
+                    <li>Automated network device availability monitoring using ICMP ping</li>
+                    <li>SNMP-based performance metric collection (bandwidth, CPU, memory, FPC utilization)</li>
+                    <li>Excel report generation with multiple worksheets for different metrics</li>
+                    <li>Dashboard summary with overall network health status</li>
+                    <li>Detailed reports for FPC utilization, port statistics, alarm status, hardware inventory, and system performance</li>
+                    <li>Multi-device support with automated data aggregation and formatting</li>
                   </ul>
                   <h4 style={{marginTop:16}}>Technical Implementation:</h4>
                   <p>
                     Built using Python with libraries including Scapy for ICMP operations, PySNMP for SNMP 
-                    polling, and Flask for web interface. The monitoring engine runs as a background service, 
-                    continuously checking configured network devices and collecting performance metrics at 
-                    specified intervals.
+                    polling, and openpyxl/xlsxwriter for Excel file generation. The monitoring script runs 
+                    scheduled or on-demand to collect data from configured network devices and compile results 
+                    into structured Excel workbooks with formatted tables, charts, and summary statistics.
                   </p>
-                  <p>
-                    Data is stored in SQLite database for historical analysis and trend reporting. The alert 
-                    system supports multiple notification methods including email and log files. The web 
-                    dashboard provides real-time status views and historical graphs for performance analysis.
-                  </p>
+                  <h4 style={{marginTop:16}}>Report Outputs:</h4>
+                  <ul>
+                    <li><strong>Dashboard Summary:</strong> Overall network health overview with key metrics</li>
+                    <li><strong>Utilisasi FPC:</strong> Forwarding Plane Complex utilization tracking</li>
+                    <li><strong>Utilisasi Port:</strong> Port utilization and bandwidth statistics</li>
+                    <li><strong>Alarm Status:</strong> Active alarms and system warnings</li>
+                    <li><strong>Hardware Inventory:</strong> Device inventory and configuration details</li>
+                    <li><strong>System Performance:</strong> CPU, memory, and system resource metrics</li>
+                  </ul>
                   <h4 style={{marginTop:16}}>Use Cases:</h4>
                   <ul>
-                    <li>Small to medium enterprise network monitoring</li>
-                    <li>Network troubleshooting and incident management support</li>
+                    <li>Periodic network infrastructure reporting and documentation</li>
                     <li>Performance baseline establishment and capacity planning</li>
-                    <li>Network automation and DevOps integration</li>
+                    <li>Network troubleshooting with detailed historical data analysis</li>
+                    <li>Management reporting and compliance documentation</li>
                   </ul>
                   <div style={{marginTop:12}}>
-                    <strong>Technologies:</strong> {modalProject.tech.join(", ")}
+                    <strong>Technologies:</strong> Python, Scapy, PySNMP, openpyxl/xlsxwriter, Network Monitoring
                   </div>
                   <div className="project-links">
                     <div className="project-link-item">
