@@ -13,7 +13,7 @@
   <meta name="author" content="Ade Naufal Rianto" />
 
   <meta name="description"
-    content="Ade Naufal Rianto - Network Engineer with 7+ years of experience. JNCIS-SP & JNCIA-Junos certified. Expert in Routing Protocols (BGP, OSPF, IS-IS), MPLS, VPN, Network Automation with Python, Juniper JunOS, and High Availability network infrastructure design." />
+    content="Ade Naufal Rianto - Network Engineer with 7+ years of progressive experience in enterprise and telecommunications. JNCIS-SP & JNCIA-Junos certified. Specializing in Routing Protocols (BGP, OSPF, IS-IS), MPLS, VPN, Network Automation with Python, Juniper JunOS, and High Availability network infrastructure." />
 
   <!-- FAVICON -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
@@ -25,7 +25,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Ade Naufal Rianto | Network Engineer" />
   <meta property="og:description"
-    content="JNCIS-SP & JNCIA-Junos certified Network Engineer with 7+ years of experience in enterprise & telecommunications. Expert in BGP, OSPF, MPLS, Network Automation (Python), and High Availability infrastructure design." />
+    content="JNCIS-SP & JNCIA-Junos certified Network Engineer with 7+ years of progressive experience in enterprise & telecommunications. Specializing in BGP, OSPF, MPLS, Network Automation (Python), and High Availability infrastructure." />
   <meta property="og:url" content="https://wokding.github.io/ade-portfolio/" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://wokding.github.io/ade-portfolio/profile.jpg" />
@@ -40,7 +40,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@ade_naufal" />
   <meta name="twitter:title" content="Ade Naufal Rianto | Network Engineer" />
-  <meta name="twitter:description" content="JNCIS-SP & JNCIA-Junos certified Network Engineer. 7+ years expertise in BGP, OSPF, MPLS, VPN, Network Automation with Python, and High Availability network design. Specialized in Juniper JunOS and enterprise telecommunications." />
+  <meta name="twitter:description" content="JNCIS-SP & JNCIA-Junos certified Network Engineer. 7+ years of progressive experience in BGP, OSPF, MPLS, VPN, Network Automation with Python, and High Availability network design. Specializing in Juniper JunOS and enterprise telecommunications." />
   <meta name="twitter:image" content="https://wokding.github.io/ade-portfolio/profile.jpg" />
 
   <!-- Structured Data (JSON-LD) -->
@@ -52,7 +52,7 @@
     "url": "https://wokding.github.io/ade-portfolio/",
     "image": "https://wokding.github.io/ade-portfolio/profile.jpg",
     "jobTitle": "Network Engineer",
-    "description": "JNCIS-SP & JNCIA-Junos certified Network Engineer with 7+ years of experience designing and operating high-availability network infrastructures. Expert in Routing Protocols (BGP, OSPF, IS-IS), MPLS, VPN, Network Automation with Python (Paramiko, Scapy, PySNMP), Juniper JunOS platforms, Network Security, and Performance Monitoring. Specialized in enterprise and telecommunications network operations.",
+    "description": "Network Engineer with 7+ years of progressive experience in IT infrastructure and telecommunications environments. JNCIS-SP & JNCIA-Junos certified professional specializing in enterprise routing, switching, WAN architectures, and IP-based network infrastructure. Focused on maintaining high-availability network environments for mission-critical business operations with expertise in BGP, OSPF, IS-IS, MPLS, and network security.",
     "knowsAbout": ["BGP", "OSPF", "IS-IS", "MPLS", "VPN", "Juniper JunOS", "Network Automation", "Python", "High Availability", "Network Security", "SNMP", "Firewall", "Load Balancing", "Network Monitoring"],
     "hasCredential": [
       {
@@ -85,92 +85,51 @@
   <!-- Analytics (privacy-friendly) -->
   <script data-goatcounter="https://ade-naufal.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
-  <!-- Animated Browser Tab Title -->
+  <!-- Dynamic Browser Tab Title -->
   <script>
-    const isMobile = window.innerWidth <= 768;
-
     const titleMap = {
-      about: isMobile
-        ? "👋 About • "
-        : "👋 About | Ade Naufal Rianto • ",
-
-      "cover-letter": isMobile
-        ? "✉️ Cover Letter • "
-        : "✉️ Cover Letter | Ade Naufal Rianto • ",
-
-      skills: isMobile
-        ? "🧠 Skills • "
-        : "🧠 Technical Skills | Ade Naufal Rianto • ",
-
-      certifications: isMobile
-        ? "📜 Certifications • "
-        : "📜 Certifications | Ade Naufal Rianto • ",
-
-      education: isMobile
-        ? "🎓 Education • "
-        : "🎓 Education | Ade Naufal Rianto • ",
-
-      experience: isMobile
-        ? "🛠 Experience • "
-        : "🛠 Experience | Ade Naufal Rianto • ",
-
-      projects: isMobile
-        ? "🚀 Projects • "
-        : "🚀 Projects & Achievements | Ade Naufal Rianto • ",
+      about: "About | Ade Naufal Rianto",
+      "cover-letter": "Cover Letter | Ade Naufal Rianto",
+      skills: "Technical Skills | Ade Naufal Rianto",
+      certifications: "Certifications | Ade Naufal Rianto",
+      education: "Education | Ade Naufal Rianto",
+      experience: "Experience | Ade Naufal Rianto",
+      statement: "Professional Focus | Ade Naufal Rianto",
+      projects: "Projects & Achievements | Ade Naufal Rianto",
+      contact: "Contact | Ade Naufal Rianto"
     };
 
-    const defaultTitle = isMobile
-      ? "👨‍💻 Ade | Network Engineer • "
-      : "👨‍💻 Ade Naufal Rianto | Network Engineer • ";
+    const defaultTitle = "Ade Naufal Rianto — Network Engineer | Portfolio";
 
-    let currentText = defaultTitle;
-    let index = 0;
-    let animationInterval = null;
+    function updateTitle() {
+      // Use the same logic as App.jsx scroll handler
+      const sections = document.querySelectorAll("section[id]");
+      let current = "";
+      
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 120;
+        if (window.pageYOffset >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
 
-    function animateTitle() {
-      document.title =
-        currentText.substring(index) + currentText.substring(0, index);
-      index = (index + 1) % currentText.length;
-    }
-
-    function syncTitleWithNavbar() {
-      const activeLink = document.querySelector(".nav-link.active");
-
-      if (!activeLink) {
-        currentText = defaultTitle;
-        return;
-      }
-
-      const targetId = activeLink.getAttribute("href").replace("#", "");
-      if (titleMap[targetId] && titleMap[targetId] !== currentText) {
-        currentText = titleMap[targetId];
-        index = 0;
-      }
-    }
-
-    function startAnimation() {
-      if (!animationInterval) {
-        animationInterval = setInterval(animateTitle, 300);
-      }
-    }
-
-    function stopAnimation() {
-      clearInterval(animationInterval);
-      animationInterval = null;
-    }
-
-    // Visibility API — pause when tab inactive
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) {
-        stopAnimation();
+      if (current && titleMap[current]) {
+        document.title = titleMap[current];
       } else {
-        startAnimation();
+        document.title = defaultTitle;
       }
-    });
+    }
 
-    // Initial start
-    startAnimation();
-    setInterval(syncTitleWithNavbar, 200);
+    // Listen to scroll events
+    window.addEventListener("scroll", updateTitle);
+    
+    // Initial update on page load
+    window.addEventListener("load", () => {
+      setTimeout(updateTitle, 500);
+    });
+    
+    // Also update on hash change (for direct navigation)
+    window.addEventListener("hashchange", updateTitle);
   </script>
 </body>
 
