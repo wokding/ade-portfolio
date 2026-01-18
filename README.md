@@ -6,7 +6,7 @@
 [![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge&logo=vercel&logoColor=white)](https://wokding.github.io/ade-portfolio/)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](LICENSE)
 
-**Professional portfolio showcasing 7+ years of network engineering expertise, certifications, and technical projects**
+**Professional portfolio showcasing 7+ years of progressive network engineering experience, Juniper certifications (JNCIS-SP, JNCIA-Junos), and technical projects**
 
 [View Demo](https://wokding.github.io/ade-portfolio/) • [Report Bug](https://github.com/wokding/ade-portfolio/issues) • [Request Feature](https://github.com/wokding/ade-portfolio/issues)
 
@@ -29,43 +29,47 @@
 
 ## 🎯 About
 
-This is a modern, responsive portfolio website built to showcase my professional experience as a **Network Engineer** with expertise in:
+This is a modern, responsive portfolio website built to showcase my professional experience as a **Network Engineer** with specialization in:
 
-- 🌐 Enterprise & Service Provider Networking
-- 🔒 Network Security & High Availability
-- 🛠️ Juniper Equipment (MX, EX, SRX Series)
-- 📊 Network Monitoring & Documentation
+- 🌐 Enterprise Routing, Switching & WAN Architectures
+- 🔒 Network Security & High Availability Design
+- 🛠️ Juniper JunOS (MX, EX, SRX Series) Configuration
+- 🐍 Network Automation with Python (Paramiko, Scapy, PySNMP)
+- 📊 Network Monitoring & Infrastructure Documentation
 - 🏅 Juniper Certifications (JNCIS-SP, JNCIA-Junos)
 
-The portfolio features a clean, professional design with dark mode support, smooth animations, and comprehensive sections highlighting education, experience, certifications, and technical projects.
+The portfolio features a clean, professional design with dark/light mode, smooth animations, dynamic browser tab titles, and comprehensive sections highlighting my career progression from IT Support to Network Engineering.
 
 ---
 
 ## ✨ Features
 
 ### 🎨 Design & UX
-- ✅ **Fully Responsive** - Mobile, tablet, and desktop optimized
-- 🌓 **Dark/Light Mode** - Toggle theme with persistent preference
-- 🎭 **Smooth Animations** - Fade-in, scroll reveals, and transitions
-- ♿ **Accessible** - WCAG compliant with proper ARIA labels
-- ⚡ **Fast Loading** - Optimized assets and lazy loading
+- ✅ **Fully Responsive** - Optimized for mobile, tablet, and desktop
+- 🌓 **Dark/Light Mode** - Theme toggle with localStorage persistence
+- 🎭 **Smooth Animations** - Fade-in effects, scroll reveals, and transitions
+- ♿ **Accessible** - WCAG compliant with ARIA labels and keyboard navigation
+- ⚡ **Fast Loading** - Optimized assets, lazy loading, and code splitting
+- 📑 **Dynamic Tab Titles** - Browser tab updates based on active section
 
 ### 📱 Sections
-- 👤 **Hero Section** - Professional introduction with quick actions
-- 📝 **About & Cover Letter** - Detailed professional background
-- 💼 **Experience Timeline** - 7+ years of career history
-- 🎓 **Education** - Academic achievements with Cum Laude distinction
-- 🏆 **Certifications** - Juniper & industry certifications
-- 🛠️ **Technical Skills** - Categorized skill sets with filtering
-- 🚀 **Projects & Achievements** - IoT, Web Development, Data Mining
-- 📬 **Contact Form** - Integrated with Formspree for submissions
+- 👤 **Hero Section** - Professional introduction with CTA buttons
+- 📝 **About & Cover Letter** - Career journey and professional narrative
+- 💼 **Experience Timeline** - 7+ years from IT Support to Network Engineer
+- 🎓 **Education** - Bachelor's degree with Cum Laude honors
+- 🏆 **Certifications** - JNCIS-SP, JNCIA-Junos, BNSP, TOEFL ITP
+- 🛠️ **Technical Skills** - Core (24 skills) & Additional (12 skills) with 2-column layout
+- 💭 **Professional Focus** - Career philosophy and approach
+- 🚀 **Projects & Achievements** - Network Monitoring, IoT, Web Development, Data Mining
+- 📬 **Contact Form** - Formspree integration for direct messaging
 
 ### 🎥 Interactive Elements
-- 🎬 **Project Demos** - Video showcases hosted on GitHub Releases
-- 🔍 **Modal Views** - Detailed project descriptions on click
-- 🔽 **Lazy Loading** - On-demand video loading for performance
-- 📊 **Filter System** - Category-based skill and project filtering
-- 📄 **CV Download** - Direct PDF download link
+- 🎬 **Project Demos** - Auto-play disabled carousel for Network Monitoring screenshots
+- 🔍 **Modal Views** - Detailed project information with technology badges
+- 🔽 **Lazy Loading** - Performance-optimized media loading
+- 📊 **Skill Filtering** - 10 filter options (All, Core, Additional, + 7 specific groups)
+- 📄 **CV Download** - Direct PDF download button
+- 🔝 **Clickable Logo** - Smooth scroll to top with URL hash clear
 
 ---
 
@@ -78,39 +82,61 @@ The portfolio features a clean, professional design with dark mode support, smoo
 
 ### Styling
 ![CSS3](https://img.shields.io/badge/CSS3-Modern-1572B6?style=flat-square&logo=css3&logoColor=white)
-![Responsive](https://img.shields.io/badge/Design-Responsive-38B2AC?style=flat-square&logo=tailwindcss&logoColor=white)
+![Responsive](https://img.shields.io/badge/Design-Mobile%20First-38B2AC?style=flat-square&logo=css3&logoColor=white)
 
-### Icons & Assets
-![Lucide](https://img.shields.io/badge/Icons-Lucide-F56565?style=flat-square&logo=feather&logoColor=white)
+### Icons & UI
+![Lucide](https://img.shields.io/badge/Icons-Lucide%20React-F56565?style=flat-square&logo=feather&logoColor=white)
 
-### Deployment
+### Deployment & Hosting
 ![GitHub Pages](https://img.shields.io/badge/Hosting-GitHub%20Pages-222222?style=flat-square&logo=github&logoColor=white)
-![GitHub Releases](https://img.shields.io/badge/Assets-GitHub%20Releases-181717?style=flat-square&logo=github&logoColor=white)
+![InfinityFree](https://img.shields.io/badge/Mirror-InfinityFree-FF6C37?style=flat-square&logo=infinityfree&logoColor=white)
 
 ### Development Tools
-![ESLint](https://img.shields.io/badge/ESLint-Configured-4B32C3?style=flat-square&logo=eslint&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-Flat%20Config-4B32C3?style=flat-square&logo=eslint&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-Version%20Control-F05032?style=flat-square&logo=git&logoColor=white)
+
+### SEO & Analytics
+![Structured Data](https://img.shields.io/badge/SEO-JSON--LD-4285F4?style=flat-square&logo=google&logoColor=white)
+![Sitemap](https://img.shields.io/badge/Sitemap-XML-00C853?style=flat-square&logo=google&logoColor=white)
 
 ---
 
 ## 🚀 Project Highlights
 
-### 1️⃣ IoT-Based Smart Door Lock System
-> **Arduino | C/C++ | Electronics**
+### 1️⃣ Network Monitoring System
+> **Python | Paramiko | Scapy | PySNMP | openpyxl**
 
 <details>
 <summary>📖 View Details</summary>
 
-- Designed and implemented secure access control system
-- Integrated multiple authentication methods (keypad, RFID)
-- Developed firmware in C/C++ for microcontroller logic
-- Real-time logging and monitoring capabilities
+- Automated network infrastructure monitoring and reporting
+- ICMP ping for device availability monitoring
+- SNMP-based performance metric collection (bandwidth, CPU, memory, FPC)
+- Excel report generation with multiple worksheets
+- Dashboard summary with overall network health status
+- Multi-device support with automated data aggregation
+- [View Source Code →](https://github.com/wokding/monitoringnetwork)
+
+</details>
+
+### 2️⃣ Arduino Smart Door Lock System
+> **Arduino | C/C++ | Keypad 4x4 | LCD I2C | RTC DS3231 | Servo**
+
+<details>
+<summary>📖 View Details</summary>
+
+- IoT-based secure access control system
+- Keypad authentication with PIN validation
+- LCD display for user interface
+- Real-time clock for access logging
+- Servo motor control for door mechanism
+- Developed firmware in C/C++ for microcontroller
 - [View Source Code →](https://github.com/wokding/arduino-doorlock-NEW)
 
 </details>
 
-### 2️⃣ Sales Information System (SIFO Penjualan)
-> **PHP | MySQL | Web Development**
+### 3️⃣ Sales Information System (SIFO)
+> **CodeIgniter | PHP | MySQL | Bootstrap | JavaScript**
 
 <details>
 <summary>📖 View Details</summary>
@@ -119,21 +145,23 @@ The portfolio features a clean, professional design with dark mode support, smoo
 - Role-based access control for multiple user types
 - Sales reporting with advanced filtering
 - Responsive design with Bootstrap framework
+- DataTables integration for data management
 - [View Source Code →](https://github.com/wokding/sifopenjualan)
 
 </details>
 
-### 3️⃣ Sales Data Mining Using Apriori Algorithm
-> **Python | Data Mining | Business Intelligence**
+### 4️⃣ Sales Data Mining Using Apriori Algorithm
+> **Data Mining | CodeIgniter | PHP | MySQL | Bootstrap**
 
 <details>
 <summary>📖 View Details</summary>
 
 - Undergraduate thesis project - **Cum Laude** distinction
-- Implemented Apriori algorithm for pattern discovery
-- Analyzed pharmacy sales data for business insights
-- Data visualization with Matplotlib/Seaborn
-- Generated actionable recommendations for inventory optimization
+- Implemented Apriori algorithm for association rule mining
+- Analyzed pharmacy sales data for pattern discovery
+- Web-based interface for data input and analysis
+- Generated actionable business insights for inventory optimization
+- [View Source Code →](https://github.com/wokding/apriori)
 
 </details>
 
