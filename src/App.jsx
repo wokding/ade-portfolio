@@ -533,80 +533,86 @@ export default function App() {
           </div>
 
           <div className="content-card fade-in-up">
-            <div className="skills-grid">
-              {(() => {
-                // Show all categories and groups
-                if (skillFilter === "all") {
-                  return Object.entries(skills).map(([category, categoryData]) => (
-                    <div key={category} className="skill-category">
-                      <h3 className="category-title">{skillCategories[category]}</h3>
-                      {Object.entries(categoryData).map(([groupKey, skillList]) => (
-                        <div key={groupKey} className="skill-group">
-                          <h4>{skillCategories[groupKey]}</h4>
-                          <ul>
-                            {skillList.map((skill, idx) => (
-                              <li key={idx} className="skill-item">
-                                <Code size={16} />
-                                <span>{skill}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  ));
-                }
-                
-                // Show specific category (core or additional)
-                if (skillFilter === "core" || skillFilter === "additional") {
-                  const categoryData = skills[skillFilter];
-                  return (
-                    <div key={skillFilter} className="skill-category">
-                      <h3 className="category-title">{skillCategories[skillFilter]}</h3>
-                      {Object.entries(categoryData).map(([groupKey, skillList]) => (
-                        <div key={groupKey} className="skill-group">
-                          <h4>{skillCategories[groupKey]}</h4>
-                          <ul>
-                            {skillList.map((skill, idx) => (
-                              <li key={idx} className="skill-item">
-                                <Code size={16} />
-                                <span>{skill}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  );
-                }
-                
-                // Show specific group
-                const allGroups = { ...skills.core, ...skills.additional };
-                if (allGroups[skillFilter]) {
-                  const parentCategory = Object.keys(skills).find(cat => 
-                    skills[cat][skillFilter]
-                  );
-                  return (
-                    <div key={skillFilter} className="skill-category">
-                      <h3 className="category-title">{skillCategories[parentCategory]}</h3>
-                      <div className="skill-group">
-                        <h4>{skillCategories[skillFilter]}</h4>
-                        <ul>
-                          {allGroups[skillFilter].map((skill, idx) => (
-                            <li key={idx} className="skill-item">
-                              <Code size={16} />
-                              <span>{skill}</span>
-                            </li>
+            {(() => {
+              // Show all categories and groups
+              if (skillFilter === "all") {
+                return (
+                  <div className="skills-grid">
+                    {Object.entries(skills).map(([category, categoryData]) => (
+                      <div key={category} className="skill-category">
+                        <h3 className="category-title">{skillCategories[category]}</h3>
+                        <div className="skill-groups-wrapper">
+                          {Object.entries(categoryData).map(([groupKey, skillList]) => (
+                            <div key={groupKey} className="skill-group">
+                              <h4>{skillCategories[groupKey]}</h4>
+                              <ul>
+                                {skillList.map((skill, idx) => (
+                                  <li key={idx} className="skill-item">
+                                    <Code size={16} />
+                                    <span>{skill}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
                           ))}
-                        </ul>
+                        </div>
                       </div>
+                    ))}
+                  </div>
+                );
+              }
+              
+              // Show specific category (core or additional)
+              if (skillFilter === "core" || skillFilter === "additional") {
+                const categoryData = skills[skillFilter];
+                return (
+                  <div className="skill-category">
+                    <h3 className="category-title">{skillCategories[skillFilter]}</h3>
+                    <div className="skill-groups-wrapper">
+                      {Object.entries(categoryData).map(([groupKey, skillList]) => (
+                        <div key={groupKey} className="skill-group">
+                          <h4>{skillCategories[groupKey]}</h4>
+                          <ul>
+                            {skillList.map((skill, idx) => (
+                              <li key={idx} className="skill-item">
+                                <Code size={16} />
+                                <span>{skill}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
                     </div>
-                  );
-                }
-                
-                return null;
+                  </div>
+                );
+              }
+              
+              // Show specific group
+              const allGroups = { ...skills.core, ...skills.additional };
+              if (allGroups[skillFilter]) {
+                const parentCategory = Object.keys(skills).find(cat => 
+                  skills[cat][skillFilter]
+                );
+                return (
+                  <div key={skillFilter} className="skill-category">
+                    <h3 className="category-title">{skillCategories[parentCategory]}</h3>
+                    <div className="skill-group">
+                      <h4>{skillCategories[skillFilter]}</h4>
+                      <ul>
+                        {allGroups[skillFilter].map((skill, idx) => (
+                          <li key={idx} className="skill-item">
+                            <Code size={16} />
+                            <span>{skill}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                );
+              }
+              
+              return null;
               })()}
-            </div>
           </div>
         </div>
       </section>

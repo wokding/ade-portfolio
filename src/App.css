@@ -547,17 +547,22 @@ body {
 /* ==================== SKILLS SECTION ==================== */
 
 .skills-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  display: block;
 }
 
 .skill-category {
-  margin-bottom: 32px;
+  margin-bottom: 48px;
 }
 
 .skill-category:last-child {
   margin-bottom: 0;
+}
+
+/* Container for skill groups in 2 columns */
+.skill-groups-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
 }
 
 .category-title {
@@ -1219,13 +1224,13 @@ hr {
     padding: 28px 20px;
   }
 
-  .skills-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
+  .skill-category {
+    margin-bottom: 32px;
   }
 
-  .skill-category {
-    margin-bottom: 24px;
+  .skill-groups-wrapper {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .category-title {
