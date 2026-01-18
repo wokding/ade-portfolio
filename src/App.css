@@ -210,6 +210,15 @@ body {
   background-clip: text;
   letter-spacing: 0.5px;
   white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  display: inline-block;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  opacity: 0.8;
 }
 
 .nav-links {

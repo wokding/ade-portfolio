@@ -340,7 +340,18 @@ export default function App() {
       {/* NAVBAR */}
       <nav className="nav" role="navigation" aria-label="Main navigation">
         <div className="nav-inner">
-          <div className="logo">A.N.R</div>
+          <a 
+            href="#" 
+            className="logo"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              window.history.pushState({}, '', window.location.pathname);
+            }}
+            aria-label="Back to top"
+          >
+            A.N.R
+          </a>
 
           <button
             className={`hamburger ${mobileMenuOpen ? "open" : ""}`}
